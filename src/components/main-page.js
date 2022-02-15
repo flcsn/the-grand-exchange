@@ -6,13 +6,6 @@ import ProductItem from './product-item'
 import Footer from './footer'
 
 const MainPage = () => {
-  /*
-    Structure will be like:
-    <Header />
-    <ItemsList />
-    <Footer />
-  */
-
   return (
     <div>
       <Header />
