@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const LoginPage = () => {
   const handleFormSubmit = (event) => {
@@ -16,7 +17,7 @@ const LoginPage = () => {
         <input name='password' type='password' />
         <button type='submit'>Login</button>
       </form>
-      <a href='#'>Don&apos;t have an account?</a>
+      <Link to='/register'>Don&apos;t have an account?</Link>
     </div>
   )
 }
