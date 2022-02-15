@@ -7,7 +7,7 @@ import {
 import LandingPage from './components/landing-page'
 import LoginPage from './components/login-page'
 import RegistrationPage from './components/registration-page'
-import MainPage from './components/main-page/main-page'
+import MainPage from './components/main-page'
 
 const App = () => {
   return(

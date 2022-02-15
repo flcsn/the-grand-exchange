@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../../assets/sample-logo.PNG'
+import logo from '../assets/sample-logo.PNG'
 
 const Header = () => {
   const handleClick = (event) => {
