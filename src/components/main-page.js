@@ -1,7 +1,9 @@
 import React from 'react'
 import sampleProduct from '../assets/sample-items/sample-product'
-import ProductItem from './product-item'
+
 import Header from './header'
+import ProductItem from './product-item'
+import Footer from './footer'
 
 const MainPage = () => {
   /*
@@ -15,6 +17,7 @@ const MainPage = () => {
     <div>
       <Header />
       <ProductItem product={sampleProduct}/>
+      <Footer />
     </div>
   )
 }
