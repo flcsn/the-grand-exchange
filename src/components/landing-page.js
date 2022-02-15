@@ -1,10 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const LandingPage = () => {
+  const navigate = useNavigate()
+
   const handleSearch = (event) => {
     event.preventDefault()
-    console.log('button clicked')
+    console.log('entering main page')
+    navigate('/main')
   }
 
   return (

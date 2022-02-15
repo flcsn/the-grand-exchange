@@ -7,6 +7,7 @@ import {
 import LandingPage from './components/landing-page'
 import LoginPage from './components/login-page'
 import RegistrationPage from './components/registration-page'
+import MainPage from './components/main-page'
 
 const App = () => {
   return(
@@ -15,6 +16,7 @@ const App = () => {
         <Routes>
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegistrationPage />} />
+          <Route path='/main' element={<MainPage />} />
           <Route path='/' element={<LandingPage />} />
         </Routes>
       </div>
