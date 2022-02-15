@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
   const handleSearch = (event) => {
@@ -14,7 +15,7 @@ const LandingPage = () => {
         <input name='search' type='text' />
         <button type='submit'>Go!</button>
       </form>
-      <a href='#'>I would like to sell my products</a>
+      <Link to='/login'>I would like to sell my products</Link>
     </div>
   )
 }
