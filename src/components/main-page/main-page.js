@@ -1,4 +1,6 @@
 import React from 'react'
+import sampleProduct from '../../assets/sample-items/sample-product'
+import ProductItem from '../product-item'
 import Header from './header'
 
 const MainPage = () => {
@@ -12,6 +14,7 @@ const MainPage = () => {
   return (
     <div>
       <Header />
+      <ProductItem product={sampleProduct}/>
     </div>
   )
 }
