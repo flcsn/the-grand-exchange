@@ -14,9 +14,24 @@ usersRouter.post('/', async (req, res) => {
     emailAddress: req.body.emailAddress
   })
 
-  const savedUser = await user.save()
+  try {
+    const savedUser = await user.save()
+    return res.status(201).json(savedUser)
+  } catch (e) {
+    return res.status(400).json({
+      error: e.message
+    })
+  }
+})
 
-  res.json(savedUser)
+usersRouter.delete('/:id', async (req, res) => {
+  const user = await User.findById(req.params.id)
+
+  if (!user)
+    return res.status(404).end()
+
+  await User.deleteOne(user)
+  return res.status(204).end()
 })
 
 module.exports = usersRouter
