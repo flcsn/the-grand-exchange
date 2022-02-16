@@ -10,7 +10,7 @@ usersRouter.get('/', async (req, res) => {
 usersRouter.post('/', async (req, res) => {
   const user = new User({
     username: req.body.username,
-    password: bcrypt.hash(req.body.password, 10),
+    passwordHash: await bcrypt.hash(req.body.password, 10),
     emailAddress: req.body.emailAddress
   })
 
