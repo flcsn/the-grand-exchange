@@ -1,9 +1,15 @@
 const express = require('express')
+const cors = require('cors')
+const helmet = require('helmet')
 const app = express()
 
-app.get('/', (req, res) => {
-  return res.json('Hello!')
-})
+const usersRouter = require('./controllers/users')
+
+app.use(express.json())
+app.use(cors())
+app.use(helmet())
+
+app.use('/users', usersRouter)
 
 const PORT = 3001
 
