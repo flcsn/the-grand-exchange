@@ -1,4 +1,6 @@
-const mongoose = require('mongoose')
+// not updated with image uploading functionality
+
+/* const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
 const Product = require('../models/product')
@@ -89,4 +91,4 @@ describe('Products', () => {
 afterAll(done => {
   mongoose.connection.close()
   done()
-})
+}) */

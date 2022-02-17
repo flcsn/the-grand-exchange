@@ -3,15 +3,29 @@ const Product = require('../models/product')
 const multer = require('multer')
 
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './uploads')
+  destination: (req, file, cb) => {
+    cb(null, './uploads/')
   },
-  filename: function(req, file, cb) {
+  filename: (req, file, cb) => {
     cb(null, file.originalname)
   }
 })
 
-const upload = multer({ storage: storage })
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true)
+  } else {
+    cb(new Error('file is not a JPEG or PNG file'), false)
+  }
+}
+
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  }
+})
 
 productsRouter.get('/', async (req, res) => {
   const products = await Product.find({})
@@ -29,11 +43,16 @@ productsRouter.get('/:id', async (req, res) => {
 })
 
 productsRouter.post('/', upload.single('image'), async (req, res) => {
+  // Windows saves files with back slashes \ instead of forward slashes /
+  const path = req.file.path
+  const fixedPath = path.replace(/\\/g, '/')
+
   const newProduct = new Product({
     title: req.body.title,
     description: req.body.description,
     stock: req.body.stock,
-    price: req.body.price
+    price: req.body.price,
+    image: fixedPath
   })
 
   try {
