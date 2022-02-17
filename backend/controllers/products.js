@@ -1,5 +1,17 @@
 const productsRouter = require('express').Router()
 const Product = require('../models/product')
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
+const upload = multer({ storage: storage })
 
 productsRouter.get('/', async (req, res) => {
   const products = await Product.find({})
@@ -16,7 +28,7 @@ productsRouter.get('/:id', async (req, res) => {
   return res.json(product)
 })
 
-productsRouter.post('/', async (req, res) => {
+productsRouter.post('/', upload.single('image'), async (req, res) => {
   const newProduct = new Product({
     title: req.body.title,
     description: req.body.description,

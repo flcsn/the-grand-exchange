@@ -26,6 +26,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     min: [1, 'Cannot have price less than 1'],
     required: true
+  },
+  image: {
+    data: Buffer,
+    contentType: String
   }
 })
 
