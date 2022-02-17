@@ -39,7 +39,7 @@ productsRouter.delete('/:id', async (req, res) => {
   if (!product)
     return res.status(404).end()
 
-  await Product.delete(product)
+  await Product.deleteOne(product)
   return res.status(204).end()
 })
 
