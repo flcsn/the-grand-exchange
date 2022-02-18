@@ -10,6 +10,7 @@ import LoginPage from './components/login-page'
 import RegistrationPage from './components/registration-page'
 import MainPage from './components/main-page'
 import ProductPage from './components/product-page'
+import UserListings from './components/user-products'
 
 const App = () => {
   const user = useSelector(state => state.user)
@@ -23,9 +24,14 @@ const App = () => {
     }
   }, [])
 
-  const match = useMatch('/products/1')
-  const product = match
+  const productItemMatch = useMatch('/products/1')
+  const product = productItemMatch
     ? sampleProduct
+    : null
+
+  const userListingMatch = useMatch('/user/:username/products')
+  const products = userListingMatch
+    ? [] // products.find(listing => listing.owner.username === userListingMatch.params.username)
     : null
 
   return(
@@ -35,6 +41,7 @@ const App = () => {
         <Route path='/login' element={user ? <Navigate replace to='/main' /> : <LoginPage />} />
         <Route path='/register' element={<RegistrationPage />} />
         <Route path='/main' element={<MainPage />} />
+        <Route path='/user/:username/products' element={<UserListings products={products}/>} />
         <Route path='/' element={<LandingPage />} />
       </Routes>
     </div>
