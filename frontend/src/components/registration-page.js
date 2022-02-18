@@ -1,19 +1,17 @@
 import React, { useState }from 'react'
-import userService from '../services/users'
+import { useDispatch } from 'react-redux'
+import { register } from '../reducers/userReducer'
 
 const RegistrationPage = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [emailAddress, setEmailAddress] = useState('')
 
+  const dispatch = useDispatch()
+
   const handleFormSubmit = async (event) => {
     event.preventDefault()
-    try {
-      const result = await userService.register(username, password, emailAddress)
-      console.log('registration successful', result)
-    } catch (e) {
-      console.log('error:', e)
-    }
+    dispatch(register(username, password, emailAddress))
   }
 
   return(
