@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Routes, Route, useMatch } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserFromLocalStorage } from './reducers/userReducer'
+import { saveUserFromLocalStorage } from './reducers/userReducer'
 import sampleProduct from './assets/sample-items/sample-product'
 
 import LandingPage from './components/landing-page'
@@ -16,7 +16,11 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getUserFromLocalStorage())
+    const user = window.localStorage.getItem('the-grand-exchange-user')
+    if (user) {
+      const parsedUser = JSON.parse(user)
+      dispatch(saveUserFromLocalStorage(parsedUser))
+    }
   }, [])
 
   const match = useMatch('/products/1')

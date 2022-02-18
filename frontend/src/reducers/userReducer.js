@@ -16,6 +16,10 @@ const userReducer = (state = null, action) => {
     case 'REGISTRATION_FAIL': {
       return state
     }
+    case 'LOG_OUT': {
+      window.localStorage.removeItem('the-grand-exchange-user')
+      return null
+    }
     default:
       return state
   }
@@ -55,13 +59,16 @@ export const register = (username, password, emailAddress) => {
   }
 }
 
-export const getUserFromLocalStorage = () => {
-  const user = window.localStorage.getItem('the-grand-exchange-user')
-  if (!user) return
-  const parsedUser = JSON.parse(user)
+export const saveUserFromLocalStorage = (user) => {
   return {
     type: 'LOGIN_SUCCESS',
-    data: parsedUser
+    data: user
+  }
+}
+
+export const logout = () => {
+  return {
+    type: 'LOG_OUT'
   }
 }
 
