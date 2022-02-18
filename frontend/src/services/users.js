@@ -1,12 +1,13 @@
 import axios from 'axios'
 
-const usersBaseURL = 'https://localhost:3001/users'
-const loginBaseURL = 'https://localhost:3001/login'
+const usersBaseURL = 'http://localhost:3001/users'
+const loginBaseURL = 'http://localhost:3001/login'
 
-const register = async (username, password, email) => {
-  const newUser = { username, password, email }
-
+const register = async (username, password, emailAddress) => {
+  const newUser = { username, password, emailAddress }
+  console.log('registering', newUser)
   const result = await axios.post(usersBaseURL, newUser)
+  console.log(result)
   return result.data
 }
 
