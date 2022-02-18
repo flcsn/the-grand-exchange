@@ -3,19 +3,17 @@ import userService from '../services/users'
 const userReducer = (state = null, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS': {
-      console.log('login success')
+      window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(action.data))
       return action.data
     }
     case 'REGISTRATION_SUCCESS': {
-      console.log('registration success')
+      window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(action.data))
       return action.data
     }
     case 'LOGIN_FAIL': {
-      console.log('login failed')
       return state
     }
     case 'REGISTRATION_FAIL': {
-      console.log('registration failed')
       return state
     }
     default:
@@ -26,10 +24,10 @@ const userReducer = (state = null, action) => {
 export const login = (username, password) => {
   return async dispatch => {
     try {
-      const result = await userService.login(username, password)
+      const user = await userService.login(username, password)
       dispatch({
         type: 'LOGIN_SUCCESS',
-        data: result
+        data: user
       })
     } catch (e) {
       console.log('error:', e.message)
@@ -43,10 +41,10 @@ export const login = (username, password) => {
 export const register = (username, password, emailAddress) => {
   return async dispatch => {
     try {
-      const result = await userService.register(username, password, emailAddress)
+      const user = await userService.register(username, password, emailAddress)
       dispatch({
         type: 'REGISTRATION_SUCCESS',
-        data: result
+        data: user
       })
     } catch (e) {
       console.log('error:', e.message)
@@ -54,6 +52,16 @@ export const register = (username, password, emailAddress) => {
         type: 'REGISTRATION_FAIL'
       })
     }
+  }
+}
+
+export const getUserFromLocalStorage = () => {
+  const user = window.localStorage.getItem('the-grand-exchange-user')
+  if (!user) return
+  const parsedUser = JSON.parse(user)
+  return {
+    type: 'LOGIN_SUCCESS',
+    data: parsedUser
   }
 }
 

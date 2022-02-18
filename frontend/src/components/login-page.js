@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import userService from '../services/users'
+import { useDispatch } from 'react-redux'
+import { login } from '../reducers/userReducer'
+import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
+  const navigate = useNavigate()
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
+  const dispatch = useDispatch()
+
   const handleFormSubmit = async (event) => {
     event.preventDefault()
-    console.log('logging in with', username, password)
-    try {
-      const result = await userService.login(username, password)
-      console.log('login successful', result)
-    } catch (e) {
-      console.log('error:', e.message)
-    }
+    dispatch(login(username, password))
+    navigate('/main')
   }
 
   return(
