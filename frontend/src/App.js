@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route, useMatch } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { saveUserFromLocalStorage } from './reducers/userReducer'
 import sampleProduct from './assets/sample-items/sample-product'
 
 import LandingPage from './components/landing-page'
@@ -9,6 +12,17 @@ import MainPage from './components/main-page'
 import ProductPage from './components/product-page'
 
 const App = () => {
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const user = window.localStorage.getItem('the-grand-exchange-user')
+    if (user) {
+      const parsedUser = JSON.parse(user)
+      dispatch(saveUserFromLocalStorage(parsedUser))
+    }
+  }, [])
+
   const match = useMatch('/products/1')
   const product = match
     ? sampleProduct
@@ -18,7 +32,7 @@ const App = () => {
     <div>
       <Routes>
         <Route path='/products/1' element={<ProductPage product={product}/>} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/login' element={user ? <Navigate replace to='/main' /> : <LoginPage />} />
         <Route path='/register' element={<RegistrationPage />} />
         <Route path='/main' element={<MainPage />} />
         <Route path='/' element={<LandingPage />} />
