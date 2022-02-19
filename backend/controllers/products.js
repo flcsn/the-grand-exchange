@@ -1,6 +1,8 @@
 const productsRouter = require('express').Router()
 const Product = require('../models/product')
+const User = require('../models/user')
 const multer = require('multer')
+const { tokenExtractor, userExtractor } = require('../utils/middleware')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -42,27 +44,36 @@ productsRouter.get('/:id', async (req, res) => {
   return res.json(product)
 })
 
-productsRouter.post('/', upload.single('image'), async (req, res) => {
+productsRouter.post('/', tokenExtractor, userExtractor, upload.single('image'), async (req, res) => {
   // Windows saves files with back slashes \ instead of forward slashes /
   const path = req.file.path
   const fixedPath = path.replace(/\\/g, '/')
+  const user = await User.findById(req.user)
 
   const newProduct = new Product({
     title: req.body.title,
     description: req.body.description,
     stock: req.body.stock,
     price: req.body.price,
-    image: fixedPath
+    image: fixedPath,
+    owner: user.id
   })
 
   try {
     const savedProduct = await newProduct.save()
+    user.products.push(savedProduct.id)
+    await user.save()
     return res.status(201).json(savedProduct)
   } catch (e) {
     return res.status(400).json({
       error: e.message
     })
   }
+})
+
+productsRouter.delete('/', async (req, res) => {
+  await Product.deleteMany({})
+  return res.status(204).end()
 })
 
 productsRouter.delete('/:id', async (req, res) => {

@@ -26,7 +26,11 @@ const userSchema = new mongoose.Schema({
     validate: [isEmail, 'invalid email address'],
     required: true,
     unique: true
-  }
+  },
+  products: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product'
+  }]
 })
 
 userSchema.set('toJSON', {
