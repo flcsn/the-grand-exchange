@@ -24,13 +24,20 @@ usersRouter.post('/', async (req, res) => {
   }
 })
 
+usersRouter.delete('/', async (req, res) => {
+  console.log(await User.deleteMany())
+
+  return res.status(204).end()
+})
+
 usersRouter.delete('/:id', async (req, res) => {
   const user = await User.findById(req.params.id)
+  console.log(user)
 
   if (!user)
     return res.status(404).end()
 
-  await User.deleteOne(user)
+  console.log(await User.deleteOne(user))
   return res.status(204).end()
 })
 
