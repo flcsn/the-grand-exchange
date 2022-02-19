@@ -1,25 +1,20 @@
 import userService from '../services/users'
+import productService from '../services/products'
 
 const userReducer = (state = null, action) => {
   switch (action.type) {
-    case 'LOGIN_SUCCESS': {
-      window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(action.data))
+    case 'LOGIN_SUCCESS':
       return action.data
-    }
-    case 'REGISTRATION_SUCCESS': {
-      window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(action.data))
+    case 'REGISTRATION_SUCCESS':
       return action.data
-    }
-    case 'LOGIN_FAIL': {
+    case 'GOT_USER_FROM_LOCAL':
+      return action.data
+    case 'LOGIN_FAIL':
       return state
-    }
-    case 'REGISTRATION_FAIL': {
+    case 'REGISTRATION_FAIL':
       return state
-    }
-    case 'LOG_OUT': {
-      window.localStorage.removeItem('the-grand-exchange-user')
+    case 'LOG_OUT':
       return null
-    }
     default:
       return state
   }
@@ -29,6 +24,8 @@ export const login = (username, password) => {
   return async dispatch => {
     try {
       const user = await userService.login(username, password)
+      window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(user))
+      productService.extractToken(user)
       dispatch({
         type: 'LOGIN_SUCCESS',
         data: user
@@ -46,6 +43,8 @@ export const register = (username, password, emailAddress) => {
   return async dispatch => {
     try {
       const user = await userService.register(username, password, emailAddress)
+      window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(user))
+      productService.extractToken(user)
       dispatch({
         type: 'REGISTRATION_SUCCESS',
         data: user
@@ -60,15 +59,23 @@ export const register = (username, password, emailAddress) => {
 }
 
 export const saveUserFromLocalStorage = (user) => {
-  return {
-    type: 'LOGIN_SUCCESS',
-    data: user
+  return async dispatch => {
+    window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(user))
+    productService.extractToken(user)
+    dispatch({
+      type: 'GOT_USER_FROM_LOCAL',
+      data: user
+    })
   }
 }
 
 export const logout = () => {
-  return {
-    type: 'LOG_OUT'
+  return async dispatch => {
+    window.localStorage.removeItem('the-grand-exchange-user')
+    productService.removeToken()
+    dispatch({
+      type: 'LOG_OUT'
+    })
   }
 }
 
