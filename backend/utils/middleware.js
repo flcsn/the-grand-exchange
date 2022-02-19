@@ -3,6 +3,7 @@ const { JWT_SECRET } = require('../utils/config')
 
 const tokenExtractor = (req, res, next) => {
   const authorization = req.get('authorization')
+  console.log('authorization', authorization)
   let token = ''
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     token = authorization.substring(7)
@@ -16,14 +17,14 @@ const userExtractor = (req, res, next) => {
   const token = req.token
   if (!token) {
     return res.status(401).json({
-      error: 'missing token'
+      message: 'missing token'
     })
   }
 
   const decodedToken = jwt.verify(token, JWT_SECRET)
   if (!decodedToken) {
     return res.status(401).json({
-      error: 'invalid token'
+      message: 'invalid token'
     })
   }
 
