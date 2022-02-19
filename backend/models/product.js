@@ -28,7 +28,9 @@ const productSchema = new mongoose.Schema({
     required: true
   },
   image: {
-    type: String
+    data: Buffer,
+    contentType: String,
+    select: false
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,

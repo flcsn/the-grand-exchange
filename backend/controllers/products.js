@@ -3,6 +3,7 @@ const Product = require('../models/product')
 const User = require('../models/user')
 const multer = require('multer')
 const { tokenExtractor, userExtractor } = require('../utils/middleware')
+const fs = require('fs')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -46,8 +47,11 @@ productsRouter.get('/:id', async (req, res) => {
 
 productsRouter.post('/', tokenExtractor, userExtractor, upload.single('image'), async (req, res) => {
   // Windows saves files with back slashes \ instead of forward slashes /
-  const path = req.file.path
-  const fixedPath = path.replace(/\\/g, '/')
+  const p = req.file.path
+  const fixedPath = p.replace(/\\/g, '/')
+  console.log('path', p)
+  console.log('fixedpath', fixedPath)
+  console.log('directory', __dirname)
   const user = await User.findById(req.user)
 
   const newProduct = new Product({
@@ -55,7 +59,10 @@ productsRouter.post('/', tokenExtractor, userExtractor, upload.single('image'), 
     description: req.body.description,
     stock: req.body.stock,
     price: req.body.price,
-    image: fixedPath,
+    image: {
+      data: fs.readFileSync(fixedPath),
+      contentType: 'image/png'
+    },
     owner: user.id
   })
 
