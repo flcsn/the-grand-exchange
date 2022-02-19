@@ -39,4 +39,20 @@ const addProduct = async (title, description, stock, price, image) => {
   return result.data
 }
 
-export default { extractToken, removeToken, addProduct }
+const getAll = async () => {
+  const result = await axios.get(productsBaseURL)
+  return result.data
+}
+
+const getOne = async (id) => {
+  const result = await axios.get(`${productsBaseURL}/${id}`)
+  return result.data
+}
+
+export default {
+  extractToken,
+  removeToken,
+  addProduct,
+  getAll,
+  getOne
+}

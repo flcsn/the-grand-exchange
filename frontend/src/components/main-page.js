@@ -1,15 +1,24 @@
-import React from 'react'
-import sampleProduct from '../assets/sample-items/sample-product'
+import React, { useState, useEffect } from 'react'
+import productService from '../services/products'
 
 import Header from './header'
 import ProductItem from './product-item'
 import Footer from './footer'
 
 const MainPage = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(async () => {
+    const p = await productService.getAll()
+    if (p) setProducts(p)
+  }, [])
+
   return (
     <div>
       <Header />
-      <ProductItem product={sampleProduct}/>
+      {products.map(product =>
+        <ProductItem key={product.id} product={product} />)
+      }
       <Footer />
     </div>
   )
