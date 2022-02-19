@@ -3,7 +3,6 @@ import Header from './header'
 import Footer from './footer'
 
 const ProductPage = ({ product }) => {
-  console.log(product)
   return (
     <div>
       <Header />
