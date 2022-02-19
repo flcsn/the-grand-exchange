@@ -49,8 +49,6 @@ productsRouter.post('/', tokenExtractor, userExtractor, upload.single('image'), 
   const path = req.file.path
   const fixedPath = path.replace(/\\/g, '/')
   const user = await User.findById(req.user)
-  console.log('user is', user.id)
-  console.log(user.products)
 
   const newProduct = new Product({
     title: req.body.title,
