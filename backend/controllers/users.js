@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt')
 
 usersRouter.get('/', async (req, res) => {
   const users = await User.find({})
+    .populate('products', {
+      id: 1,
+      title: 1
+    })
   return res.json(users)
 })
 
@@ -32,12 +36,9 @@ usersRouter.delete('/', async (req, res) => {
 
 usersRouter.delete('/:id', async (req, res) => {
   const user = await User.findById(req.params.id)
-  console.log(user)
-
   if (!user)
     return res.status(404).end()
 
-  console.log(await User.deleteOne(user))
   return res.status(204).end()
 })
 

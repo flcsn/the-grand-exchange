@@ -32,6 +32,10 @@ const upload = multer({
 
 productsRouter.get('/', async (req, res) => {
   const products = await Product.find({})
+    .populate('owner', {
+      id: 1,
+      username: 1
+    })
   return res.json(products)
 })
 
@@ -49,9 +53,6 @@ productsRouter.post('/', tokenExtractor, userExtractor, upload.single('image'), 
   // Windows saves files with back slashes \ instead of forward slashes /
   const p = req.file.path
   const fixedPath = p.replace(/\\/g, '/')
-  console.log('path', p)
-  console.log('fixedpath', fixedPath)
-  console.log('directory', __dirname)
   const user = await User.findById(req.user)
 
   const newProduct = new Product({
@@ -68,7 +69,8 @@ productsRouter.post('/', tokenExtractor, userExtractor, upload.single('image'), 
 
   try {
     const savedProduct = await newProduct.save()
-    user.products.push(savedProduct.id)
+    user.products = user.products.concat(savedProduct.id)
+    console.log('user products', user.products)
     await user.save()
     return res.status(201).json(savedProduct)
   } catch (e) {
