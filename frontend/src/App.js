@@ -12,6 +12,7 @@ import RegistrationPage from './components/registration-page'
 import MainPage from './components/main-page'
 import ProductPage from './components/product-page'
 import UserListings from './components/user-products'
+import Notification from './components/notification'
 
 const App = () => {
   const user = useSelector(state => state.user)
@@ -42,6 +43,7 @@ const App = () => {
 
   return(
     <div>
+      <Notification />
       <Routes>
         <Route path='/products/1' element={<ProductPage product={product}/>} />
         <Route path='/login' element={user ? <Navigate replace to='/main' /> : <LoginPage />} />
