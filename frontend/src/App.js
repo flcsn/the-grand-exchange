@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route, useMatch } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveUserFromLocalStorage } from './reducers/userReducer'
 import sampleProduct from './assets/sample-items/sample-product'
-import productService from './services/products'
+import { initializeProducts } from './reducers/productReducer'
 
 import LandingPage from './components/landing-page'
 import LoginPage from './components/login-page'
@@ -15,13 +15,11 @@ import UserListings from './components/user-products'
 
 const App = () => {
   const user = useSelector(state => state.user)
+  const products = useSelector(state => state.products)
   const dispatch = useDispatch()
 
-  const [products, setProducts] = useState([])
-
   useEffect(async () => {
-    const p = await productService.getAll()
-    if (p) setProducts(p)
+    dispatch(initializeProducts())
   }, [])
 
   useEffect(() => {
