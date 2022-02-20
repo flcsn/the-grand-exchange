@@ -1,5 +1,6 @@
 import userService from '../services/users'
 import productService from '../services/products'
+import { setNotification } from './notificationReducer'
 
 const userReducer = (state = null, action) => {
   switch (action.type) {
@@ -30,11 +31,13 @@ export const login = (username, password) => {
         type: 'LOGIN_SUCCESS',
         data: user
       })
+      dispatch(setNotification('Logged in successfully!'))
     } catch (e) {
       console.log('error:', e.message)
       dispatch({
         type: 'LOGIN_FAIL'
       })
+      dispatch(setNotification('Failed to log in'))
     }
   }
 }
@@ -50,11 +53,13 @@ export const register = (username, password, emailAddress) => {
         type: 'REGISTRATION_SUCCESS',
         data: loginUser
       })
+      dispatch(setNotification('Successfully created a new account!'))
     } catch (e) {
       console.log('error:', e.message)
       dispatch({
         type: 'REGISTRATION_FAIL'
       })
+      dispatch(setNotification('Failed to create a new account'))
     }
   }
 }
@@ -77,6 +82,7 @@ export const logout = () => {
     dispatch({
       type: 'LOG_OUT'
     })
+    dispatch(setNotification('Logged out successfully'))
   }
 }
 
