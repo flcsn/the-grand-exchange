@@ -6,6 +6,8 @@ import ProductItem from './product-item'
 
 const UserProducts = ({ products }) => {
   const [showForm, setShowForm] = useState(false)
+  console.log('products', products)
+
   return (
     <div>
       <Header />

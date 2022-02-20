@@ -1,26 +1,25 @@
 import React from 'react'
-import productService from '../services/products'
+import { useDispatch } from 'react-redux'
+import { addProduct } from '../reducers/productReducer'
 
 const ProductForm = () => {
-  const addProduct = (event) => {
+  const dispatch = useDispatch()
+
+  const handleAddProduct = (event) => {
     event.preventDefault()
-    try {
-      productService.addProduct(
-        event.target.title.value,
-        event.target.description.value,
-        event.target.stock.value,
-        event.target.price.value,
-        event.target.image.files[0],
-      )
-    } catch (e) {
-      console.log(e.message)
-    }
+    dispatch(addProduct(
+      event.target.title.value,
+      event.target.description.value,
+      event.target.stock.value,
+      event.target.price.value,
+      event.target.image.files[0],
+    ))
   }
 
   return (
     <div>
       <h2>Add a new product!</h2>
-      <form onSubmit={addProduct} encType='multipart/form-data'>
+      <form onSubmit={handleAddProduct} encType='multipart/form-data'>
         <label>Product title</label>
         <input type='text' name='title' required />
         <label>Product description</label>

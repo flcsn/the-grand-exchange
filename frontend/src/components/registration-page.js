@@ -1,8 +1,11 @@
 import React, { useState }from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { register } from '../reducers/userReducer'
 
 const RegistrationPage = () => {
+  const navigate = useNavigate()
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [emailAddress, setEmailAddress] = useState('')
@@ -12,6 +15,7 @@ const RegistrationPage = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault()
     dispatch(register(username, password, emailAddress))
+    navigate('/main')
   }
 
   return(

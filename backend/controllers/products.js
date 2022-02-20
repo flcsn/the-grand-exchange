@@ -3,6 +3,7 @@ const Product = require('../models/product')
 const User = require('../models/user')
 const multer = require('multer')
 const { tokenExtractor, userExtractor } = require('../utils/middleware')
+const fs = require('fs')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -31,6 +32,10 @@ const upload = multer({
 
 productsRouter.get('/', async (req, res) => {
   const products = await Product.find({})
+    .populate('owner', {
+      id: 1,
+      username: 1
+    })
   return res.json(products)
 })
 
@@ -46,8 +51,8 @@ productsRouter.get('/:id', async (req, res) => {
 
 productsRouter.post('/', tokenExtractor, userExtractor, upload.single('image'), async (req, res) => {
   // Windows saves files with back slashes \ instead of forward slashes /
-  const path = req.file.path
-  const fixedPath = path.replace(/\\/g, '/')
+  const p = req.file.path
+  const fixedPath = p.replace(/\\/g, '/')
   const user = await User.findById(req.user)
 
   const newProduct = new Product({
@@ -55,13 +60,17 @@ productsRouter.post('/', tokenExtractor, userExtractor, upload.single('image'), 
     description: req.body.description,
     stock: req.body.stock,
     price: req.body.price,
-    image: fixedPath,
+    image: {
+      data: fs.readFileSync(fixedPath),
+      contentType: 'image/png'
+    },
     owner: user.id
   })
 
   try {
     const savedProduct = await newProduct.save()
-    user.products.push(savedProduct.id)
+    user.products = user.products.concat(savedProduct.id)
+    console.log('user products', user.products)
     await user.save()
     return res.status(201).json(savedProduct)
   } catch (e) {

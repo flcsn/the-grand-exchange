@@ -3,7 +3,6 @@ const { JWT_SECRET } = require('../utils/config')
 
 const tokenExtractor = (req, res, next) => {
   const authorization = req.get('authorization')
-  console.log('authorization', authorization)
   let token = ''
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     token = authorization.substring(7)
