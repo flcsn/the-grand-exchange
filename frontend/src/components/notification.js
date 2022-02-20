@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Notification = () => {
+const Notification = ({ notification }) => {
+  if (notification === '')
+    return null
+
   return (
     <div>
-      Notification
+      {notification}
     </div>
   )
 }

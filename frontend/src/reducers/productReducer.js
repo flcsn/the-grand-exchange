@@ -1,4 +1,5 @@
 import productService from '../services/products'
+import { setNotification } from './notificationReducer'
 
 const productReducer = (state = [], action) => {
   switch (action.type) {
@@ -31,8 +32,10 @@ export const addProduct = (title, description, stock, price, image) => {
         type: 'SET_PRODUCTS',
         data: updatedProducts
       })
+      dispatch(setNotification('Successfully posted a new product!'))
     } catch (e) {
       console.log(e.message)
+      dispatch(setNotification('Failed to post a new product'))
     }
   }
 }

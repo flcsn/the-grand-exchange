@@ -15,8 +15,11 @@ import UserListings from './components/user-products'
 import Notification from './components/notification'
 
 const App = () => {
-  const user = useSelector(state => state.user)
-  const products = useSelector(state => state.products)
+  const state = useSelector (state => state)
+  const user = state.user
+  const products = state.products
+  const notification = state.notification
+
   const dispatch = useDispatch()
 
   useEffect(async () => {
@@ -43,7 +46,7 @@ const App = () => {
 
   return(
     <div>
-      <Notification />
+      <Notification notification={notification} />
       <Routes>
         <Route path='/products/1' element={<ProductPage product={product}/>} />
         <Route path='/login' element={user ? <Navigate replace to='/main' /> : <LoginPage />} />
