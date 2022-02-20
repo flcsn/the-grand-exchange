@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import productService from '../services/products'
+import React from 'react'
 
 import Header from './header'
 import ProductItem from './product-item'
 import Footer from './footer'
 
-const MainPage = () => {
-  const [products, setProducts] = useState([])
-
-  useEffect(async () => {
-    const p = await productService.getAll()
-    if (p) setProducts(p)
-  }, [])
-
+const MainPage = ({ products }) => {
   return (
     <div>
       <Header />

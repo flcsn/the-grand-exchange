@@ -42,12 +42,13 @@ export const login = (username, password) => {
 export const register = (username, password, emailAddress) => {
   return async dispatch => {
     try {
-      const user = await userService.register(username, password, emailAddress)
-      window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(user))
-      productService.extractToken(user)
+      await userService.register(username, password, emailAddress)
+      const loginUser = await userService.login(username, password)
+      window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(loginUser))
+      productService.extractToken(loginUser)
       dispatch({
         type: 'REGISTRATION_SUCCESS',
-        data: user
+        data: loginUser
       })
     } catch (e) {
       console.log('error:', e.message)
