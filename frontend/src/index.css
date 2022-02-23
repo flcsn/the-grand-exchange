@@ -87,20 +87,6 @@ button {
   background-color: black;
 }
 
-
-/* Header */
-
-.header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.header img {
-  width: 100px;
-  height: 100px;
-}
-
-
 /* Landing Page */
 
 .landing-page {
@@ -146,4 +132,19 @@ button {
 
 .landing-page-form > * {
   margin-bottom: 10px;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F5F5DC;
+  padding: 10px;
+}
+
+.header img {
+  width: 50px;
+  height: 50px;
 }

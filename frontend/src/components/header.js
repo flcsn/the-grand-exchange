@@ -18,8 +18,10 @@ const Header = () => {
         <img src={logo} alt='sample logo'/>
       </Link>
       <form onSubmit={handleClick}>
-        <input type='text' placeholder='Search for an item' />
-        <button type='submit'>Go!</button>
+        <div className='search-box-container'>
+          <input className='search-box' type='text' placeholder='Search for an item' />
+          <button className='search-box-button' type='submit'>Search</button>
+        </div>
       </form>
       { user ? <AccountControls user={user} /> : <Link to='/login'>Login</Link>}
     </div>
