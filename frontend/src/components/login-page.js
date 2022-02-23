@@ -21,8 +21,8 @@ const LoginPage = () => {
   return(
     <div className='landing-page'>
       <div className='landing-page-box'>
-        <div className='login-form-container'>
-          <form className='login-form' onSubmit={(event) => handleFormSubmit(event)}>
+        <div className='landing-page-form-container'>
+          <form className='landing-page-form' onSubmit={(event) => handleFormSubmit(event)}>
             <h2>Member Login</h2>
             <div className='form-input-container'>
               <input
@@ -44,7 +44,7 @@ const LoginPage = () => {
                 type='password'
               />
             </div>
-            <button className='login-btn' type='submit'>LOG IN</button>
+            <button className='form-submit-btn' type='submit'>Log in</button>
           </form>
           <Link to='/register' className='transparent-gray-link'>Don&apos;t have an account?</Link>
         </div>
