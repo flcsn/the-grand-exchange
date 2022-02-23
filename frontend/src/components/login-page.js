@@ -19,26 +19,36 @@ const LoginPage = () => {
   }
 
   return(
-    <div>
-      <form onSubmit={(event) => handleFormSubmit(event)}>
-        <h2>Login</h2>
-        <label>Username</label>
-        <input
-          name='username'
-          value={username}
-          onChange = {({ target }) => setUsername(target.value)}
-          type='text'
-        />
-        <label>Password</label>
-        <input
-          name='password'
-          value={password}
-          onChange = {({ target }) => setPassword(target.value)}
-          type='password'
-        />
-        <button type='submit'>Login</button>
-      </form>
-      <Link to='/register'>Don&apos;t have an account?</Link>
+    <div className='landing-page'>
+      <div className='landing-page-box'>
+        <div className='login-form-container'>
+          <form className='login-form' onSubmit={(event) => handleFormSubmit(event)}>
+            <h2>Member Login</h2>
+            <div className='form-input-container'>
+              <input
+                className='form-input'
+                name='username'
+                value={username}
+                placeholder='Username'
+                onChange = {({ target }) => setUsername(target.value)}
+                type='text'
+              />
+            </div>
+            <div className='form-input-container'>
+              <input
+                className='form-input'
+                name='password'
+                value={password}
+                placeholder='Password'
+                onChange = {({ target }) => setPassword(target.value)}
+                type='password'
+              />
+            </div>
+            <button className='login-btn' type='submit'>LOG IN</button>
+          </form>
+          <Link to='/register' className='transparent-gray-link'>Don&apos;t have an account?</Link>
+        </div>
+      </div>
     </div>
   )
 }

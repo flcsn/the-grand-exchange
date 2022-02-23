@@ -21,7 +21,7 @@ const LandingPage = () => {
             <button className='search-box-button' type='submit'>Search</button>
           </div>
         </form>
-        <Link to='/login' className='landing-page-login-link'>I would like to sell my products</Link>
+        <Link to='/login' className='transparent-gray-link'>I would like to sell my products</Link>
       </div>
     </div>
   )

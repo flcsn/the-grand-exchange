@@ -24,6 +24,28 @@ button {
   border: none;
 }
 
+/* Generic Styles */
+
+.transparent-gray-link {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.transparent-gray-link:hover {
+  color: black;
+}
+
+.form-input-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.form-input {
+  border-radius: 3px;
+  border-color: #d3d3d3;
+  padding: 7px 14px;
+}
+
+
 /* Search Box */
 
 .search-box-container {
@@ -61,6 +83,7 @@ button {
   height: 100px;
 }
 
+
 /* Landing Page */
 
 .landing-page {
@@ -78,6 +101,7 @@ button {
   margin: 0 auto;
   width: 500px;
   text-align: center;
+  align-items: center;
   vertical-align: middle;
   border: 2px solid black;
   border-radius: 5px;
@@ -88,10 +112,31 @@ button {
   margin-bottom: 5px;
 }
 
-.landing-page-login-link {
-  color: rgba(0, 0, 0, 0.5);
+
+/* Login Form */
+
+.login-form-container {
+  width: fit-content;
 }
 
-.landing-page-login-link:hover {
-  color: black;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.login-form > * {
+  margin-bottom: 10px;
+}
+
+.login-btn {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 3px;
+  padding: 7px 14px;
+}
+
+.login-btn:hover {
+  background-color: black;
 }
