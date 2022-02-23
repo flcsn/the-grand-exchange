@@ -148,3 +148,24 @@ button {
   width: 50px;
   height: 50px;
 }
+
+
+/* Product Item */
+
+.product-item {
+  border: 1px solid black;
+  padding: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.product-item > * {
+  margin-bottom: 5px;
+}
+
+.product-item-link {
+  background-color: #C8AD7E;
+  width: 250px;
+  margin: 0 auto;
+  padding: 7px 14px;
+}
