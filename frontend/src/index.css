@@ -149,6 +149,15 @@ button {
   height: 50px;
 }
 
+/* Product List */
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
 
 /* Product Item */
 
