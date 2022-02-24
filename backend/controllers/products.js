@@ -94,4 +94,33 @@ productsRouter.delete('/:id', async (req, res) => {
   return res.status(204).end()
 })
 
+productsRouter.put('/:id/buy', async (req, res) => {
+  const product = await Product.findById(req.params.id)
+  if (!product)
+    return res.status(404).json({
+      'message': 'product not found'
+    })
+
+  const ownerOfProduct = await User.findById(product.owner)
+  const quantity = req.body.quantity
+
+  if (product.stock < quantity) {
+    return res.status(400).json({
+      'message': 'not enough stock'
+    })
+  }
+
+  product.stock -= quantity
+  ownerOfProduct.funds += (product.price * quantity)
+
+  try {
+    await product.save()
+    await ownerOfProduct.save()
+    return res.status(200).end()
+  } catch (e) {
+    console.log(e)
+    return res.status(400).end()
+  }
+})
+
 module.exports = productsRouter
