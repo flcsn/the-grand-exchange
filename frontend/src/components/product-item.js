@@ -11,7 +11,7 @@ const ProductItem = ({ product }) => {
                      ${base64Image}`} style={{ height: '200px', width: '200px' }}/>
       <h2>{product.title}</h2>
       <p>PhP {product.price}</p>
-      <Link to='/products/1'>
+      <Link to={`/products/${product.id}`}>
         <div className='product-item-link'>
           See More
         </div>
