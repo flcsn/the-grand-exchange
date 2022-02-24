@@ -39,6 +39,7 @@ usersRouter.delete('/:id', async (req, res) => {
   if (!user)
     return res.status(404).end()
 
+  await User.deleteOne(user)
   return res.status(204).end()
 })
 
