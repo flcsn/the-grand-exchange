@@ -4,6 +4,8 @@ const User = require('../models/user')
 const multer = require('multer')
 const { tokenExtractor, userExtractor } = require('../utils/middleware')
 const fs = require('fs')
+const jwt = require('jsonwebtoken')
+const { JWT_SECRET } = require('../utils/config')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -94,7 +96,20 @@ productsRouter.delete('/:id', async (req, res) => {
   return res.status(204).end()
 })
 
-productsRouter.put('/:id/buy', async (req, res) => {
+productsRouter.put('/:id/buy', tokenExtractor, async (req, res) => {
+  const token = req.token
+  let userCustomer = null
+  if (token) {
+    const decodedToken = jwt.verify(token, JWT_SECRET)
+    if (!decodedToken) {
+      return res.status(401).json({
+        message: 'invalid token'
+      })
+    }
+
+    userCustomer = await User.findById(decodedToken.id)
+  }
+
   const product = await Product.findById(req.params.id)
   if (!product)
     return res.status(404).json({
@@ -103,6 +118,7 @@ productsRouter.put('/:id/buy', async (req, res) => {
 
   const ownerOfProduct = await User.findById(product.owner)
   const quantity = req.body.quantity
+  const totalPrice = product.price * quantity
 
   if (product.stock < quantity) {
     return res.status(400).json({
@@ -110,12 +126,25 @@ productsRouter.put('/:id/buy', async (req, res) => {
     })
   }
 
-  product.stock -= quantity
-  ownerOfProduct.funds += (product.price * quantity)
+  if (userCustomer && userCustomer.funds < totalPrice) {
+    return res.status(400).json({
+      'message': 'user does not have enough funds'
+    })
+  }
 
+  product.stock -= quantity
+  ownerOfProduct.funds += totalPrice
+
+  if (userCustomer) {
+    userCustomer.funds -= totalPrice
+  }
+
+  // possible source of error; how do we revert changes
+  // if any of the next three save calls fail?
   try {
     await product.save()
     await ownerOfProduct.save()
+    if (userCustomer) await userCustomer.save()
     return res.status(200).end()
   } catch (e) {
     console.log(e)
