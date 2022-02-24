@@ -1,22 +1,17 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { logout } from '../reducers/userReducer'
+import React, { useState } from 'react'
+import UserDropdown from './user-dropdown'
 
 const AccountControls = ({ user }) => {
-  const dispatch = useDispatch()
+  const [displayDropdown, setDisplayDropdown] = useState(false)
 
-  const handleLogout = (event) => {
-    event.preventDefault()
-    dispatch(logout())
+  const handleClick = () => {
+    setDisplayDropdown(!displayDropdown)
   }
 
   return (
     <div>
-      <p>{user.username} logged in</p>
-      <Link to={`/user/${user.username}/products`}>My Products</Link>
-      <Link to='/main'>Account Settings</Link>
-      <button onClick={handleLogout}>Log Out</button>
+      <p onClick={handleClick}>{user.username}</p>
+      {displayDropdown && <UserDropdown user={user} />}
     </div>
   )
 }
