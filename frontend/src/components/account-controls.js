@@ -13,6 +13,7 @@ const AccountControls = ({ user }) => {
 
   return (
     <div>
+      <span>Funds: {user.funds} </span>
       <p>{user.username} logged in</p>
       <Link to={`/user/${user.username}/products`}>My Products</Link>
       <Link to='/main'>Account Settings</Link>
