@@ -24,13 +24,15 @@ button {
   border: none;
 }
 
+
 /* Generic Styles */
 
 .transparent-gray-link {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .transparent-gray-link:hover {
+  cursor: pointer;
   color: black;
 }
 
@@ -87,6 +89,7 @@ button {
   background-color: black;
 }
 
+
 /* Landing Page */
 
 .landing-page {
@@ -134,6 +137,7 @@ button {
   margin-bottom: 10px;
 }
 
+
 /* Header */
 
 .header {
@@ -142,11 +146,48 @@ button {
   align-items: center;
   background-color: #F5F5DC;
   padding: 10px;
+  height: 75px;
 }
 
 .header img {
   width: 50px;
   height: 50px;
+}
+
+.header-account-controls {
+  position: relative;
+}
+
+
+/* User Dropdown Menu */
+
+.user-dropdown-menu {
+  position: absolute;
+  display: grid;
+  grid-template-columns: max-content;
+  gap: 15px;
+  top: 30px;
+  right: 0px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 5px black;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.user-dropdown-menu.active {
+  opacity: 1;
+  transform: translateY(10px);
+  pointer-events: auto;
+}
+
+.logout-btn {
+  color: white;
+  background-color: red;
+  border-radius: 3px;
+  padding: 7px 14px;
 }
 
 /* Product List */

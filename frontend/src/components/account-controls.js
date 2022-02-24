@@ -4,14 +4,15 @@ import UserDropdown from './user-dropdown'
 const AccountControls = ({ user }) => {
   const [displayDropdown, setDisplayDropdown] = useState(false)
 
-  const handleClick = () => {
-    setDisplayDropdown(!displayDropdown)
-  }
-
   return (
-    <div>
-      <p onClick={handleClick}>{user.username}</p>
-      {displayDropdown && <UserDropdown user={user} />}
+    <div className='header-account-controls'>
+      <span
+        className='transparent-gray-link'
+        onClick={() => setDisplayDropdown(!displayDropdown)}
+      >
+        {user.username}
+      </span>
+      <UserDropdown user={user} displayDropdown={displayDropdown} />
     </div>
   )
 }

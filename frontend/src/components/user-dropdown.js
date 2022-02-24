@@ -3,8 +3,10 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../reducers/userReducer'
 
-const UserDropdown = ({ user }) => {
+const UserDropdown = ({ user, displayDropdown }) => {
   const dispatch = useDispatch()
+
+  const className = `user-dropdown-menu ${displayDropdown ? 'active' : ''}`
 
   const handleLogout = (event) => {
     event.preventDefault()
@@ -12,10 +14,10 @@ const UserDropdown = ({ user }) => {
   }
 
   return (
-    <div>
-      <Link to={`/user/${user.username}/products`}>My Products</Link>
-      <Link to='/main'>Account Settings</Link>
-      <button onClick={handleLogout}>Log Out</button>
+    <div className={className}>
+      <Link className='transparent-gray-link' to={`/user/${user.username}/products`}>My Products</Link>
+      <Link className='transparent-gray-link' to='/main'>Account Settings</Link>
+      <button className='logout-btn' onClick={handleLogout}>Log Out</button>
     </div>
   )
 }
