@@ -23,7 +23,7 @@ const Header = () => {
           <input className='search-box' type='text' placeholder='Search for an item' />
           <div className='search-box-button-container'>
             <button className='search-box-button' type='submit'>
-              <HiSearch style={{ height: '24px', width: '24px' }}/>
+              <HiSearch className='search-icon' />
             </button>
           </div>
         </div>

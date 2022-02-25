@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { HiUserCircle } from 'react-icons/hi'
+
 import UserDropdown from './user-dropdown'
 
 const AccountControls = ({ user }) => {
@@ -8,7 +10,7 @@ const AccountControls = ({ user }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!displayDropdown) return
-      if (!dropdownRef.current.contains(event.target)) {
+      if (!dropdownRef.current.parentNode.contains(event.target)) {
         setDisplayDropdown(false)
       }
     }
@@ -17,12 +19,9 @@ const AccountControls = ({ user }) => {
 
   return (
     <div className='header-account-controls'>
-      <span
-        className={`transparent-white-link ${displayDropdown && 'active'}`}
-        onClick={() => setDisplayDropdown(!displayDropdown)}
-      >
-        {user.username}
-      </span>
+      <div className='user-icon-container' onClick={() => setDisplayDropdown(!displayDropdown)}>
+        <HiUserCircle className={`user-icon ${displayDropdown && 'active'}`} />
+      </div>
       <UserDropdown user={user} displayDropdown={displayDropdown} ref={dropdownRef} />
     </div>
   )

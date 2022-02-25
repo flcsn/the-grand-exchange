@@ -41,6 +41,40 @@ h2 {
 }
 
 
+/* Icons */
+
+.search-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.user-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  color: var(--color-white);
+  transition: all 0.15s ease-in-out;
+}
+
+.user-icon:hover {
+  cursor: pointer;
+  height: 36px;
+  width: 36px;
+}
+
+.user-icon.active {
+  width: 36px;
+  height: 36px;
+}
+
 /* Generic Styles */
 
 .transparent-gray-link {
@@ -219,12 +253,19 @@ h2 {
   opacity: 0;
   pointer-events: none;
   transition: all 0.2s ease-in-out;
+  z-index: 10;
 }
 
 .user-dropdown-menu.active {
   opacity: 1;
   transform: translateY(10px);
   pointer-events: auto;
+}
+
+.user-dropdown-menu-username {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0 auto;
 }
 
 .logout-btn {

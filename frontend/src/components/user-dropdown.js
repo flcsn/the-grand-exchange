@@ -15,6 +15,9 @@ const UserDropdown = forwardRef(({ user, displayDropdown }, ref) => {
 
   return (
     <div className={className} ref={ref}>
+      <p className='user-dropdown-menu-username'>
+        {user.username}
+      </p>
       <Link className='transparent-gray-link' to={`/user/${user.username}/products`}>My Products</Link>
       <Link className='transparent-gray-link' to='/main'>Account Settings</Link>
       <button className='logout-btn' onClick={handleLogout}>Log Out</button>
