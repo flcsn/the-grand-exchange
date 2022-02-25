@@ -7,7 +7,7 @@ const AccountControls = ({ user }) => {
   return (
     <div className='header-account-controls'>
       <span
-        className='transparent-gray-link'
+        className={`transparent-white-link ${displayDropdown && 'active'}`}
         onClick={() => setDisplayDropdown(!displayDropdown)}
       >
         {user.username}

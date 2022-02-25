@@ -52,6 +52,22 @@ h2 {
   color: var(--color-black);
 }
 
+.transparent-white-link {
+  color: var(--color-gray)
+}
+
+.transparent-white-link:hover {
+  cursor: pointer;
+  color: var(--color-white);
+}
+
+.transparent-white-link.active {
+  color: var(--color-white)
+}
+
+
+/* Forms */
+
 .form-input-container {
   display: flex;
   justify-content: space-evenly;
@@ -237,7 +253,13 @@ h2 {
 
 .product-item-link {
   background-color: var(--color-primary);
+  font-weight: 600;
   width: 250px;
   margin: 0 auto;
   padding: 7px 14px;
+}
+
+.product-item-link:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white)
 }
