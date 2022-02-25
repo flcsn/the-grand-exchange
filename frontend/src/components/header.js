@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/sample-logo.PNG'
 import { useSelector } from 'react-redux'
 import AccountControls from './account-controls'
+import { HiSearch } from 'react-icons/hi'
 
 const Header = () => {
   const user = useSelector(state => state.user)
@@ -20,7 +21,11 @@ const Header = () => {
       <form onSubmit={handleClick}>
         <div className='search-box-container'>
           <input className='search-box' type='text' placeholder='Search for an item' />
-          <button className='search-box-button' type='submit'>Search</button>
+          <div className='search-box-button-container'>
+            <button className='search-box-button' type='submit'>
+              <HiSearch style={{ height: '24px', width: '24px' }}/>
+            </button>
+          </div>
         </div>
       </form>
       { user ? <AccountControls user={user} /> : <Link to='/login'>Login</Link>}

@@ -7,10 +7,13 @@ const ProductItem = ({ product }) => {
 
   return (
     <div className='product-item'>
-      <img src={`data:${product.image.contentType};base64,
-                     ${base64Image}`} style={{ height: '200px', width: '200px' }}/>
+      <img
+        className='product-image'
+        src={`data:${product.image.contentType};base64,
+                     ${base64Image}`}/>
       <h2>{product.title}</h2>
-      <p>PhP {product.price}</p>
+      <p className='product-price'>₱{product.price}</p>
+      <p className='product-seller'>Offered by {product.owner.username}</p>
       <Link to={`/products/${product.id}`}>
         <div className='product-item-link'>
           See More
