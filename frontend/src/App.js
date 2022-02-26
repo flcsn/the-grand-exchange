@@ -10,7 +10,7 @@ import LoginPage from './components/login-page'
 import RegistrationPage from './components/registration-page'
 import MainPage from './components/main-page'
 import ProductPage from './components/product-page'
-import UserListings from './components/user-products'
+import UserProducts from './components/user-products'
 import Notification from './components/notification'
 
 const App = () => {
@@ -51,7 +51,7 @@ const App = () => {
         <Route path='/login' element={user ? <Navigate replace to='/main' /> : <LoginPage />} />
         <Route path='/register' element={<RegistrationPage />} />
         <Route path='/main' element={<MainPage products={products} />} />
-        <Route path='/user/:username/products' element={<UserListings products={userProducts} />} />
+        <Route path='/user/:username/products' element={<UserProducts products={userProducts} />} />
         <Route path='/' element={<LandingPage />} />
       </Routes>
     </div>

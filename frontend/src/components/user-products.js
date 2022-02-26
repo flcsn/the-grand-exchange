@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Footer from './footer'
 import Header from './header'
 import ProductForm from './product-form'
-import ProductItem from './product-item'
+import ProductList from './product-list'
 
 const UserProducts = ({ products }) => {
   const [showForm, setShowForm] = useState(false)
@@ -13,9 +13,7 @@ const UserProducts = ({ products }) => {
       <Header />
       <button onClick={() => setShowForm(!showForm)}>Add new product</button>
       {showForm && <ProductForm />}
-      {products.map(product =>
-        <ProductItem key={product.id} product={product} />)
-      }
+      <ProductList products={products} />
       <Footer />
     </div>
   )
