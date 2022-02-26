@@ -8,7 +8,7 @@ const ProductItem = ({ product }) => {
   return (
     <div className='product-item'>
       <img
-        className='product-image'
+        className='product-item-image'
         src={`data:${product.image.contentType};base64,
                      ${base64Image}`}/>
       <h2>{product.title}</h2>
