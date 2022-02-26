@@ -20,7 +20,10 @@ const ProductPage = ({ product }) => {
           />
         </div>
         <div className='product-page-details'>
-          <h2>{product.title}</h2>
+          <div className='title-and-owner-container'>
+            <h2>{product.title}</h2>
+            <p className='product-owner'>sold by {product.owner.username}</p>
+          </div>
           <p>{product.description}</p>
           <p className='product-price'>₱{product.price}</p>
           <div className='btn-and-stock-container'>

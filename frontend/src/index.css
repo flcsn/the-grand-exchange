@@ -364,6 +364,12 @@ h2 {
   padding: 20px;
 }
 
+.product-owner {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+  letter-spacing: 1.125px;
+}
+
 .btn-and-stock-container {
   display: flex;
   gap: 10px;
