@@ -6,17 +6,27 @@ import ProductList from './product-list'
 
 const UserProducts = ({ products }) => {
   const [showForm, setShowForm] = useState(false)
-  console.log('products', products)
+
+  const openForm = () => {
+    setShowForm(true)
+    document.body.classList.toggle('no-scroll')
+
+  }
+
+  const closeForm = () => {
+    setShowForm(false)
+    document.body.classList.toggle('no-scroll')
+  }
 
   return (
     <div>
       <Header />
       <div className='add-new-product-container'>
-        <button onClick={() => setShowForm(!showForm)}>
+        <button onClick={openForm}>
           Add new product
         </button>
       </div>
-      {showForm && <ProductForm />}
+      {showForm && <ProductForm closeForm={closeForm}/>}
       <ProductList products={products} />
       <Footer />
     </div>

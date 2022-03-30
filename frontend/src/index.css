@@ -91,6 +91,12 @@ ul {
 }
 
 
+/* Utilities */
+
+.no-scroll {
+  overflow: hidden;
+}
+
 /* Links */
 
 .transparent-gray-link {
@@ -317,6 +323,40 @@ ul {
 
 .add-new-product-container:hover > button { 
   color: var(--color-white)
+}
+
+
+/* Product Form */
+
+.product-form-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.product-form-container {
+  position: relative;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  width: 80%;
+  max-height: 80%;
+  background-color: var(--color-white)
+}
+
+.close-product-form-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: var(--color-gray)
+}
+
+.close-product-form-btn:hover {
+  color: var(--color-primary-dark);
 }
 
 
