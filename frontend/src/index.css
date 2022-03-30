@@ -291,6 +291,35 @@ ul {
   padding: 7px 14px;
 }
 
+
+/* User Products */
+
+.add-new-product-container {
+  width: 50%;
+  text-align: center;
+  margin: 20px auto 0 auto;
+  background-color: var(--color-primary);
+}
+
+.add-new-product-container > button {
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.add-new-product-container:hover { 
+  background-color: var(--color-primary-dark);
+}
+
+.add-new-product-container:hover > button { 
+  color: var(--color-white)
+}
+
+
 /* Product List */
 
 .product-list {

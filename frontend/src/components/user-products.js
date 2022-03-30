@@ -11,7 +11,11 @@ const UserProducts = ({ products }) => {
   return (
     <div>
       <Header />
-      <button onClick={() => setShowForm(!showForm)}>Add new product</button>
+      <div className='add-new-product-container'>
+        <button onClick={() => setShowForm(!showForm)}>
+          Add new product
+        </button>
+      </div>
       {showForm && <ProductForm />}
       <ProductList products={products} />
       <Footer />
