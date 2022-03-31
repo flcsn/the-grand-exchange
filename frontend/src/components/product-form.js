@@ -27,20 +27,38 @@ const ProductForm = ({ closeForm }) => {
           &times;
         </button>
         <form
+          className='product-form'
           onSubmit={handleAddProduct}
           encType='multipart/form-data'
         >
-          <label>Product title</label>
-          <input type='text' name='title' required />
-          <label>Product description</label>
-          <input type='text' name='description' required />
-          <label>Product stock</label>
-          <input type='number' name='stock' min='0' required />
-          <label>Product price</label>
-          <input type='number' name='price' min='1' required />
-          <label>Product image</label>
-          <input type='file' name='image' required />
-          <button type='submit'>Add product</button>
+          <div className='product-form-field'>
+            <label>Title</label>
+            <input type='text' name='title' required />
+          </div>
+          <div className='product-form-field'>
+            <label>Description</label>
+            <input type='text' name='description' required />
+          </div>
+          <div className='product-form-field-2-col'>
+            <div className='product-form-field'>
+              <label>Stock</label>
+              <input type='number' name='stock' min='0' required />
+            </div>
+            <div className='product-form-field'>
+              <label>Price</label>
+              <input type='number' name='price' min='1' required />
+            </div>
+          </div>
+          <div className='product-form-field product-form-field-file'>
+            <label>Image</label>
+            <input type='file' name='image' required />
+          </div>
+          <button
+            className='product-form-submit-btn'
+            type='submit'
+          >
+            Add product
+          </button>
         </form>
       </div>
     </div>
