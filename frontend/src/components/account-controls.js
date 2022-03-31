@@ -9,7 +9,7 @@ const AccountControls = ({ user }) => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (!displayDropdown) return
+      if (!displayDropdown || dropdownRef.current === null) return
       if (!dropdownRef.current.parentNode.contains(event.target)) {
         setDisplayDropdown(false)
       }
