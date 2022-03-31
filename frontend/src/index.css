@@ -377,6 +377,7 @@ ul {
 .product-form-field-2-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .product-form-field-file > input {
