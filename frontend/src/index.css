@@ -485,10 +485,11 @@ ul {
 }
 
 .product-page-image-container {
+  display: flex;
+  margin-left: auto;
   width: 400px;
   height: 400px;
   padding: 20px;
-  border-right: 2px solid var(--color-primary-dark);
 }
 
 .product-page-image {
