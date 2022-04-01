@@ -33,7 +33,7 @@ const ProductPage = ({ product }) => {
               </a>
             </div>
             {product.stock <= 5
-              ? <span className='product-stock'>{product.stock} items left!</span>
+              ? <p className='product-stock'>{product.stock} items left!</p>
               : null
             }
           </div>

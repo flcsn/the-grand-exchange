@@ -359,6 +359,7 @@ ul {
 .product-form-field {
   display: flex;
   flex-direction: column;
+  min-width: 100px;
 }
 
 .product-form-field > label {
@@ -638,6 +639,15 @@ ul {
 /* Media Queries */
 
 @media (max-width: 680px) {
+  .product-page-container {
+    grid-template-rows: 400px;
+  }
+
+  .product-page-image-container {
+    width: 300px;
+    height: 300px;
+  }
+
   .footer-information {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
@@ -657,5 +667,12 @@ ul {
 
   .footer-trademark {
     padding: 10px;
+  }
+}
+
+@media (max-width: 530px) {
+  .btn-and-stock-container {
+    align-self: flex-start;
+    flex-direction: column;
   }
 }
