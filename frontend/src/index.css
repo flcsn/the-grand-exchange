@@ -627,8 +627,35 @@ ul {
 }
 
 .footer-trademark {
+  padding-bottom: 10px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 14px;
   letter-spacing: 1;
   text-align: center;
+}
+
+
+/* Media Queries */
+
+@media (max-width: 680px) {
+  .footer-information {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+  }
+
+  .footer-right {
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .footer-socials {
+    gap: 20px;
+  }
+
+  .footer-trademark {
+    padding: 10px;
+  }
 }
