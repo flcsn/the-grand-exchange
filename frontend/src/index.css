@@ -249,9 +249,9 @@ ul {
   height: 75px;
 }
 
-.header img {
-  width: 50px;
-  height: 50px;
+.header img, .header > a {
+  width: 40px;
+  height: 40px;
 }
 
 .header-account-controls {
@@ -674,5 +674,13 @@ ul {
   .btn-and-stock-container {
     align-self: flex-start;
     flex-direction: column;
+  }
+
+  .search-box {
+    width: 240px;
+  }
+
+  .search-box-button-container {
+    width: 40px
   }
 }
