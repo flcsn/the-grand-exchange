@@ -43,12 +43,13 @@ ul {
   --color-gray: #a4a4a4;
   --color-gray-light: #f2f2f2;
   --color-error: #B00020;
+  --color-success: #39C16C;
 }
 
 
 /* Icons */
 
-.search-icon {
+.search-icon, .success-icon, .error-icon {
   width: 24px;
   height: 24px;
 }
@@ -97,6 +98,7 @@ ul {
   overflow: hidden;
 }
 
+
 /* Links */
 
 .transparent-gray-link {
@@ -119,6 +121,35 @@ ul {
 
 .transparent-white-link.active {
   color: var(--color-white)
+}
+
+
+/* Notification */
+
+.notification {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: space-between;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  border-radius: 3px;
+  background-color: var(--color-white);
+  font-weight: 600;
+  padding: 10px;
+  z-index: 20;
+}
+
+.success {
+  border: 2px solid var(--color-success);
+  color: var(--color-success)
+}
+
+.error {
+  border: 2px solid var(--color-error);
+  color: var(--color-error)
 }
 
 
