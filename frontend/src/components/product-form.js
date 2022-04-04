@@ -19,7 +19,7 @@ const ProductForm = ({ closeForm }) => {
   return (
     <div className='product-form-background'>
       <div className='product-form-container'>
-        <h2>Add a new product!</h2>
+        <h2>Product details</h2>
         <button
           className='close-product-form-btn'
           onClick={closeForm}

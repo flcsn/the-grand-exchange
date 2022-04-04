@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/sample-logo.PNG'
 import { useSelector } from 'react-redux'
 import AccountControls from './account-controls'
-import { HiSearch } from 'react-icons/hi'
+import { HiSearch, HiUserAdd } from 'react-icons/hi'
 
 const Header = () => {
   const user = useSelector(state => state.user)
@@ -28,7 +28,13 @@ const Header = () => {
           </div>
         </div>
       </form>
-      { user ? <AccountControls user={user} /> : <Link to='/login'>Login</Link>}
+      { user
+        ? <AccountControls user={user} />
+        : <Link to='/login'>
+          <div className='user-icon-container'>
+            <HiUserAdd className='login-icon'/>
+          </div>
+        </Link>}
     </div>
   )
 }

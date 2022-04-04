@@ -9,8 +9,8 @@ const UserProducts = ({ products }) => {
 
   const openForm = () => {
     setShowForm(true)
+    window.scroll(0,0)
     document.body.classList.toggle('no-scroll')
-
   }
 
   const closeForm = () => {
