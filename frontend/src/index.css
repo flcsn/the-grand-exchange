@@ -137,6 +137,10 @@ ul {
   width: 300px;
 }
 
+.form-input:hover { 
+  outline: none;
+}
+
 .form-submit-btn {
   width: 300px;
   background-color: var(--color-black);
@@ -674,6 +678,10 @@ ul {
 @media (max-width: 530px) {
   .landing-page-box {
     width: 400px;
+  }
+
+  .form-input, .form-submit-btn { 
+    width: 240px;
   }
 
   .search-box {
