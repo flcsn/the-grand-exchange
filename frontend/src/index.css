@@ -672,6 +672,10 @@ ul {
 }
 
 @media (max-width: 530px) {
+  .landing-page-box {
+    width: 400px;
+  }
+
   .search-box {
     width: 240px;
   }
@@ -700,6 +704,14 @@ ul {
 }
 
 @media (max-width: 400px) {
+  .landing-page-box {
+    width: 300px;
+  }
+
+  .landing-page-box > h2 {
+    width: 200px;
+  }
+
   .search-box {
     border-radius: 0;
     border-top-left-radius: 2px;
