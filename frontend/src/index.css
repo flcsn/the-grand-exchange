@@ -137,7 +137,7 @@ ul {
   width: 300px;
 }
 
-.form-input:hover { 
+.form-input:focus { 
   outline: none;
 }
 
@@ -440,7 +440,7 @@ ul {
   margin: 10px;
   width: 300px;
   text-align: center;
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
 .product-item:hover {
@@ -748,6 +748,7 @@ ul {
   }
 
   .add-new-product-container {
+    width: 200px;
     margin: 10px auto 0 auto
   }
 
