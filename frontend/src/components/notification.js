@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { HiOutlineCheckCircle, HiOutlineXCircle } from 'react-icons/hi'
 
 const Notification = ({ notification }) => {
-  if (notification.message === '')
+  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    setMessage(notification.message)
+  }, [notification])
+
+  if (message === '')
     return null
 
   const isSuccess = notification.type === 'success'
@@ -13,11 +19,18 @@ const Notification = ({ notification }) => {
 
   return (
     <div className={className}>
-      {notification.message}
-      { isSuccess
-        ? <HiOutlineCheckCircle className='success-icon'/>
-        : <HiOutlineXCircle className='error-icon' />
-      }
+      <div>
+        { isSuccess
+          ? <HiOutlineCheckCircle className='success-icon'/>
+          : <HiOutlineXCircle className='error-icon' />
+        }
+        {notification.message}
+      </div>
+      <button
+        onClick={() => setMessage('')}
+      >
+        &times;
+      </button>
     </div>
   )
 }
