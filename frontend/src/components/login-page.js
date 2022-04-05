@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { login } from '../reducers/userReducer'
-import { useNavigate } from 'react-router-dom'
+import { RiArrowGoBackLine } from 'react-icons/ri'
+
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -15,12 +16,15 @@ const LoginPage = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault()
     dispatch(login(username, password))
-    navigate('/main')
+    navigate('/')
   }
 
   return(
     <div className='landing-page'>
       <div className='landing-page-box'>
+        <Link to='/main' >
+          <RiArrowGoBackLine className='back-btn-icon' />
+        </Link>
         <div className='landing-page-form-container'>
           <form className='landing-page-form' onSubmit={(event) => handleFormSubmit(event)}>
             <h2>Member Login</h2>

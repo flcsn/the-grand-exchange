@@ -49,6 +49,14 @@ ul {
 
 /* Icons */
 
+.back-btn-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+}
+
 .search-icon, .success-icon, .error-icon {
   width: 24px;
   height: 24px;
@@ -251,6 +259,7 @@ ul {
 }
 
 .landing-page-box {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 10px 0;

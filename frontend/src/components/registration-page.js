@@ -1,7 +1,8 @@
 import React, { useState }from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { register } from '../reducers/userReducer'
+import { RiArrowGoBackLine } from 'react-icons/ri'
 
 const RegistrationPage = () => {
   const navigate = useNavigate()
@@ -21,9 +22,12 @@ const RegistrationPage = () => {
   return(
     <div className='landing-page'>
       <div className='landing-page-box'>
+        <Link to='/login' >
+          <RiArrowGoBackLine className='back-btn-icon' />
+        </Link>
         <div className='landing-page-form-container'>
           <form className='landing-page-form' onSubmit={(event) => handleFormSubmit(event)}>
-            <h2>Welcome to The Grand Exchange!</h2>
+            <h2>Register here!</h2>
             <div className='form-input-container'>
               <input
                 className='form-input'
