@@ -16,7 +16,7 @@ const LoginPage = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault()
     dispatch(login(username, password))
-    navigate('/')
+    navigate('/main')
   }
 
   return(
