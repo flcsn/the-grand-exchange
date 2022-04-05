@@ -1,23 +1,28 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { logout } from '../reducers/userReducer'
+import React, { useState, useRef, useEffect } from 'react'
+import { HiUserCircle } from 'react-icons/hi'
+
+import UserDropdown from './user-dropdown'
 
 const AccountControls = ({ user }) => {
-  const dispatch = useDispatch()
+  const [displayDropdown, setDisplayDropdown] = useState(false)
+  const dropdownRef = useRef()
 
-  const handleLogout = (event) => {
-    event.preventDefault()
-    dispatch(logout())
-  }
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!displayDropdown || dropdownRef.current === null) return
+      if (!dropdownRef.current.parentNode.contains(event.target)) {
+        setDisplayDropdown(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+  }, [dropdownRef, displayDropdown])
 
   return (
-    <div>
-      <span>Funds: {user.funds} </span>
-      <p>{user.username} logged in</p>
-      <Link to={`/user/${user.username}/products`}>My Products</Link>
-      <Link to='/main'>Account Settings</Link>
-      <button onClick={handleLogout}>Log Out</button>
+    <div className='header-account-controls'>
+      <div className='user-icon-container' onClick={() => setDisplayDropdown(!displayDropdown)}>
+        <HiUserCircle className={`user-icon ${displayDropdown && 'active'}`} />
+      </div>
+      <UserDropdown user={user} displayDropdown={displayDropdown} ref={dropdownRef} />
     </div>
   )
 }

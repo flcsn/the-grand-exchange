@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { HiSearch } from 'react-icons/hi'
 
 const LandingPage = () => {
   const navigate = useNavigate()
@@ -11,14 +12,22 @@ const LandingPage = () => {
   }
 
   return (
-    <div>
-      <h2>Welcome to The Grand Exchange!</h2>
-      <p>What are you buying today?</p>
-      <form onSubmit={(event) => handleSearch(event)}>
-        <input name='search' type='text' />
-        <button type='submit'>Go!</button>
-      </form>
-      <Link to='/login'>I would like to sell my products</Link>
+    <div className='landing-page'>
+      <div className='landing-page-box'>
+        <h2>Welcome to The Grand Exchange!</h2>
+        <p>What are you buying today?</p>
+        <form onSubmit={(event) => handleSearch(event)}>
+          <div className='search-box-container'>
+            <input className='search-box' name='search' type='text' />
+            <div className='search-box-button-container'>
+              <button className='search-box-button' type='submit'>
+                <HiSearch className='search-icon' />
+              </button>
+            </div>
+          </div>
+        </form>
+        <Link to='/login' className='transparent-gray-link'>I would like to sell my products</Link>
+      </div>
     </div>
   )
 }
