@@ -419,7 +419,7 @@ ul {
   display: flex;
   flex-direction: column;
   min-width: 80px;
-  overflow: scroll
+  overflow: hidden
 }
 
 .product-form-field > label {
@@ -753,12 +753,29 @@ ul {
   }
 
   .product-page-container {
-    grid-template-rows: 350px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px 1fr;
   }
 
   .product-page-image-container {
-    width: 250px;
-    height: 250px;
+    margin: 0 auto;
+    height: 300px;
+    width: 300px;
+  }
+
+  .product-page-details {
+    min-height: 300px;
+    padding: 0;
+    justify-content: space-around;
+    align-items: center
+  }
+
+  .title-and-owner-container {
+    text-align: center;
+  }
+
+  .btn-and-stock-container {
+    margin: 0 auto;
   }
 
   .product-owner {
@@ -809,32 +826,6 @@ ul {
 
   .product-list {
     padding: 10px
-  }
-
-  .product-page-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 300px 1fr;
-  }
-
-  .product-page-image-container {
-    margin: 0 auto;
-    height: 300px;
-    width: 300px;
-  }
-
-  .product-page-details {
-    min-height: 300px;
-    padding: 0;
-    justify-content: space-around;
-    align-items: center
-  }
-
-  .title-and-owner-container {
-    text-align: center;
-  }
-
-  .btn-and-stock-container {
-    margin: 0 auto;
   }
 
   .footer-left > ul > li, .about-writeup, .footer-trademark {
