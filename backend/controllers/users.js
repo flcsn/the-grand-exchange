@@ -1,6 +1,7 @@
 const usersRouter = require('express').Router()
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
+const { tokenExtractor, userExtractor } = require('../utils/middleware')
 
 usersRouter.get('/', async (req, res) => {
   const users = await User.find({})
@@ -39,7 +40,33 @@ usersRouter.delete('/:id', async (req, res) => {
   if (!user)
     return res.status(404).end()
 
+  await User.deleteOne(user)
   return res.status(204).end()
+})
+
+usersRouter.put('/:id/add/funds', tokenExtractor, userExtractor, async (req, res) => {
+  if (req.user !== req.params.id) {
+    console.log('req.user is ', req.user)
+    console.log('req.params.id is', req.params.id)
+    return res.status(401).json({
+      'message': 'users may only add to their wallets while logged in'
+    })
+  }
+
+  const userToUpdate = await User.findById(req.params.id)
+
+  console.log('user', userToUpdate)
+  console.log('funds to add', req.body.funds)
+
+  userToUpdate.funds = userToUpdate.funds + req.body.funds
+
+  try {
+    const updatedUser = await userToUpdate.save()
+    return res.status(200).json(updatedUser)
+  } catch (e) {
+    console.log(e)
+    return res.status(400).end()
+  }
 })
 
 module.exports = usersRouter

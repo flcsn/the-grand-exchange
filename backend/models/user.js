@@ -27,6 +27,11 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  funds: {
+    type: Number,
+    default: 0,
+    min: 0
+  },
   products: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product'
