@@ -49,10 +49,19 @@ const getOne = async (id) => {
   return result.data
 }
 
+const search = async (title) => {
+  const result = await axios.get(`${productsBaseURL}/search`, {
+    params: { title }
+  })
+
+  return result.data
+}
+
 export default {
   extractToken,
   removeToken,
   addProduct,
   getAll,
-  getOne
+  getOne,
+  search
 }

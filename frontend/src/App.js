@@ -3,7 +3,7 @@ import { Routes, Route, useMatch } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveUserFromLocalStorage } from './reducers/userReducer'
-import { initializeProducts } from './reducers/productReducer'
+import { getAllProducts } from './reducers/productReducer'
 
 import LandingPage from './components/landing-page'
 import LoginPage from './components/login-page'
@@ -14,7 +14,7 @@ import UserProducts from './components/user-products'
 import Notification from './components/notification'
 
 const App = () => {
-  const state = useSelector (state => state)
+  const state = useSelector(state => state)
   const user = state.user
   const products = state.products
   const notification = state.notification
@@ -22,7 +22,7 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(async () => {
-    dispatch(initializeProducts())
+    dispatch(getAllProducts())
   }, [])
 
   useEffect(() => {

@@ -3,7 +3,6 @@ import { setNotification } from './notificationReducer'
 
 const productReducer = (state = [], action) => {
   switch (action.type) {
-    case 'INITIALIZE_PRODUCTS':
     case 'SET_PRODUCTS':
       return action.data
     default:
@@ -11,12 +10,24 @@ const productReducer = (state = [], action) => {
   }
 }
 
-export const initializeProducts = () => {
+export const getAllProducts = () => {
   return async dispatch => {
     const products = await productService.getAll()
     if (products) {
       dispatch({
-        type: 'INITIALIZE_PRODUCTS',
+        type: 'SET_PRODUCTS',
+        data: products
+      })
+    }
+  }
+}
+
+export const searchProduct = (title) => {
+  return async dispatch => {
+    const products = await productService.search(title)
+    if (products) {
+      dispatch({
+        type: 'SET_PRODUCTS',
         data: products
       })
     }

@@ -5,6 +5,7 @@ import Footer from './footer'
 import ProductList from './product-list'
 
 const MainPage = ({ products }) => {
+  console.log(products)
   return (
     <div>
       <Header />
