@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { searchProduct } from '../reducers/productReducer'
 
-const SearchBox = ({ postHandleSearchFn }) => {
+const SearchBox = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -18,9 +18,6 @@ const SearchBox = ({ postHandleSearchFn }) => {
       dispatch(searchProduct(title))
       navigate(`/search?title=${title}`)
     }
-
-    if (postHandleSearchFn)
-      postHandleSearchFn()
   }
 
   return (
