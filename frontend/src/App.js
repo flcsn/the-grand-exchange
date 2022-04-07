@@ -12,6 +12,7 @@ import MainPage from './components/main-page'
 import ProductPage from './components/product-page'
 import UserProducts from './components/user-products'
 import Notification from './components/notification'
+import SearchResults from './components/search-results'
 
 const App = () => {
   const state = useSelector(state => state)
@@ -50,7 +51,8 @@ const App = () => {
         <Route path='/products/:id' element={<ProductPage product={product}/>} />
         <Route path='/login' element={user ? <Navigate replace to='/main' /> : <LoginPage />} />
         <Route path='/register' element={<RegistrationPage />} />
-        <Route path='/main' element={<MainPage products={products} />} />
+        <Route path='/search' element={<SearchResults products={products}/>} />
+        <Route path='/main' element={<MainPage />} />
         <Route path='/user/:username/products' element={<UserProducts products={userProducts} />} />
         <Route path='/' element={<LandingPage />} />
       </Routes>

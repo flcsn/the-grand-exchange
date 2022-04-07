@@ -1,16 +1,23 @@
 import React from 'react'
 import { HiSearch } from 'react-icons/hi'
 import { useDispatch } from 'react-redux'
-import { getAllProducts, searchProduct } from '../reducers/productReducer'
+import { useNavigate } from 'react-router-dom'
+import { searchProduct } from '../reducers/productReducer'
 
 const SearchBox = ({ postHandleSearchFn }) => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleSearch = (event) => {
     event.preventDefault()
     const title = event.target.search.value
-    if (title === '') dispatch(getAllProducts())
-    else dispatch(searchProduct(title))
+    if (title === '') {
+      navigate('/main')
+    }
+    else {
+      dispatch(searchProduct(title))
+      navigate(`/search?title=${title}`)
+    }
 
     if (postHandleSearchFn)
       postHandleSearchFn()
