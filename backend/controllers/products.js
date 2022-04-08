@@ -43,7 +43,7 @@ productsRouter.get('/', async (req, res) => {
 
 productsRouter.get('/search', async (req, res) => {
   const products = await Product.find({
-    title: { $eq: req.query.title } })
+    title: { $regex: `.*${req.query.title}.*` } })
     .populate('owner', {
       id: 1,
       username: 1

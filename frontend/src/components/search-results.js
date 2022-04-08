@@ -10,11 +10,9 @@ const SearchResults = () => {
   const [products, setProducts] = useState([])
   const location = useLocation()
   const title = new URLSearchParams(location.search).get('title')
-  console.log('querying for', title)
 
   useEffect(async () => {
     const p = await productService.search(title)
-    console.log('products found', p)
     setProducts(p)
   }, [title])
 
@@ -22,7 +20,7 @@ const SearchResults = () => {
     <div>
       <Header />
       <div className='search-status'>
-        <p>{products.length} { products.length === 1 ? 'product' : 'products'} found for &apos;{title}&apos;</p>
+        <p>{products.length} { products.length === 1 ? 'match' : 'matches'} found for &apos;{title}&apos;</p>
       </div>
       <ProductList products={products}/>
       <Footer />
