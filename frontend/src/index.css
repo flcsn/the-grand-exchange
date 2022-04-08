@@ -476,6 +476,14 @@ ul {
 }
 
 
+/* Search Results */
+
+.search-status {
+  margin: 10px 20px;
+  font-weight: 600;
+}
+
+
 /* Product List */
 
 .product-list {
