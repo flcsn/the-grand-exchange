@@ -51,7 +51,7 @@ const App = () => {
         <Route path='/products/:id' element={<ProductPage product={product}/>} />
         <Route path='/login' element={user ? <Navigate replace to='/main' /> : <LoginPage />} />
         <Route path='/register' element={<RegistrationPage />} />
-        <Route path='/search' element={<SearchResults products={products}/>} />
+        <Route path='/search' element={<SearchResults />} />
         <Route path='/main' element={<MainPage />} />
         <Route path='/user/:username/products' element={<UserProducts products={userProducts} />} />
         <Route path='/' element={<LandingPage />} />

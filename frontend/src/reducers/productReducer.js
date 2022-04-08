@@ -22,18 +22,6 @@ export const getAllProducts = () => {
   }
 }
 
-export const searchProduct = (title) => {
-  return async dispatch => {
-    const products = await productService.search(title)
-    if (products) {
-      dispatch({
-        type: 'SET_PRODUCTS',
-        data: products
-      })
-    }
-  }
-}
-
 export const addProduct = (title, description, stock, price, image) => {
   return async dispatch => {
     try {
