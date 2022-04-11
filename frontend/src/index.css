@@ -132,6 +132,33 @@ ul {
 }
 
 
+/* Skeleton */
+
+.skeleton {
+  margin: 0 auto;
+  animation: skeleton-loading 1s infinite alternate;
+}
+
+.skeleton-title-field {
+  width: 50%;
+  height: 16px;
+}
+
+.skeleton-field {
+  width: 90%;
+  height: 12px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--color-gray-light)
+  }
+
+  100% {
+    background-color: var(--color-gray);
+  }
+}
+
 /* Notification */
 
 .notification {
