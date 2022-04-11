@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+
 import Footer from './footer'
 import Header from './header'
 import ProductForm from './product-form'
@@ -6,6 +8,9 @@ import ProductList from './product-list'
 
 const UserProducts = ({ products }) => {
   const [showForm, setShowForm] = useState(false)
+
+  let { username } = useParams()
+  console.log('useParams', username)
 
   const openForm = () => {
     setShowForm(true)

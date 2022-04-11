@@ -3,31 +3,18 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/sample-logo.PNG'
 import { useSelector } from 'react-redux'
 import AccountControls from './account-controls'
-import { HiSearch, HiUserAdd } from 'react-icons/hi'
+import { HiUserAdd } from 'react-icons/hi'
+import SearchBox from './search-box'
 
 const Header = () => {
   const user = useSelector(state => state.user)
-
-  const handleClick = (event) => {
-    event.preventDefault()
-    console.log('button clicked')
-  }
 
   return (
     <div className='header'>
       <Link to='/main'>
         <img src={logo} alt='sample logo'/>
       </Link>
-      <form onSubmit={handleClick}>
-        <div className='search-box-container'>
-          <input className='search-box' type='text' placeholder='Search for an item' />
-          <div className='search-box-button-container'>
-            <button className='search-box-button' type='submit'>
-              <HiSearch className='search-icon' />
-            </button>
-          </div>
-        </div>
-      </form>
+      <SearchBox />
       { user
         ? <AccountControls user={user} />
         : <Link to='/login'>
