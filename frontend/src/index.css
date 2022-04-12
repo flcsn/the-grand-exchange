@@ -381,6 +381,20 @@ ul {
   margin: 0 auto;
 }
 
+.user-dropdown-menu-funds {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-primary);
+  padding: 5px 10px;
+}
+
+.user-dropdown-menu-funds > div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 .logout-btn {
   color: white;
   background-color: red;
