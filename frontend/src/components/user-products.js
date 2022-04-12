@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import Footer from './footer'
-import Header from './header'
 import ProductForm from './product-form'
 import ProductList from './product-list'
 
@@ -25,7 +23,6 @@ const UserProducts = ({ products }) => {
 
   return (
     <div>
-      <Header />
       <div className='add-new-product-container'>
         <button onClick={openForm}>
           Add new product
@@ -33,7 +30,6 @@ const UserProducts = ({ products }) => {
       </div>
       {showForm && <ProductForm closeForm={closeForm}/>}
       <ProductList products={products} />
-      <Footer />
     </div>
   )
 }

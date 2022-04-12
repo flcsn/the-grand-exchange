@@ -13,6 +13,8 @@ import ProductPage from './components/product-page'
 import UserProducts from './components/user-products'
 import Notification from './components/notification'
 import SearchResults from './components/search-results'
+import Header from './components/header'
+import Footer from './components/footer'
 
 const App = () => {
   const state = useSelector(state => state)
@@ -47,15 +49,17 @@ const App = () => {
   return(
     <div>
       <Notification notification={notification} />
+      <Header />
       <Routes>
         <Route path='/products/:id' element={<ProductPage product={product}/>} />
-        <Route path='/login' element={user ? <Navigate replace to='/main' /> : <LoginPage />} />
-        <Route path='/register' element={<RegistrationPage />} />
         <Route path='/search' element={<SearchResults />} />
         <Route path='/main' element={<MainPage />} />
         <Route path='/user/:username/products' element={<UserProducts products={userProducts} />} />
+        <Route path='/login' element={user ? <Navigate replace to='/main' /> : <LoginPage />} />
+        <Route path='/register' element={<RegistrationPage />} />
         <Route path='/' element={<LandingPage />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import productService from '../services/products'
 
-import Header from './header'
 import ProductList from './product-list'
-import Footer from './footer'
 import ProductListSkeleton from './product-list-skeleton'
 
 const SearchResults = () => {
@@ -22,7 +20,6 @@ const SearchResults = () => {
 
   return (
     <div>
-      <Header />
       <div className='search-status'>
         { loading
           ? <p>Searching for products that match &apos;{title}&apos;</p>
@@ -33,7 +30,6 @@ const SearchResults = () => {
         ? <ProductListSkeleton />
         : <ProductList products={products} />
       }
-      <Footer />
     </div>
   )
 }

@@ -2,8 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../reducers/productReducer'
 
-import Header from './header'
-import Footer from './footer'
 import ProductList from './product-list'
 
 const MainPage = () => {
@@ -17,9 +15,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <Header />
       <ProductList products={products} />
-      <Footer />
     </div>
   )
 }
