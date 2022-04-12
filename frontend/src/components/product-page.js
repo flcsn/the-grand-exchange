@@ -1,6 +1,4 @@
 import React from 'react'
-import Header from './header'
-import Footer from './footer'
 
 const ProductPage = ({ product }) => {
   console.log(product)
@@ -10,7 +8,6 @@ const ProductPage = ({ product }) => {
 
   return (
     <div>
-      <Header />
       <div className='product-page-container'>
         <div className='product-page-image-container'>
           <img
@@ -39,7 +36,6 @@ const ProductPage = ({ product }) => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

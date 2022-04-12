@@ -175,7 +175,7 @@ ul {
   background-color: var(--color-white);
   font-weight: 600;
   padding: 10px;
-  z-index: 20;
+  z-index: 999;
 }
 
 .notification > div {
@@ -278,11 +278,16 @@ ul {
 /* Landing Page */
 
 .landing-page {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   height: 100vh;
   width: 100%;
   justify-content: center;
   align-items: center;
+  background-color: var(--color-white);
+  z-index: 100;
 }
 
 .landing-page-box {
