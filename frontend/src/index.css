@@ -180,7 +180,16 @@ ul {
   background-color: var(--color-white)
 }
 
-.modal-form-container > h2 {
+.modal-form-container-sm {
+  position: relative;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  width: 50%;
+  background-color: var(--color-white)
+}
+
+.modal-form-container > h2,
+.modal-form-container-sm > h2 {
   text-align: center;
 }
 
@@ -525,6 +534,48 @@ ul {
   color: var(--color-white)
 }
 
+
+/* Wallet Form */
+
+#wallet-modal-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+}
+
+.wallet-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.wallet-form > input {
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.wallet-form > input:focus {
+  outline: none;
+}
+
+.wallet-form > button {
+  background-color: var(--color-primary);
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.wallet-form > button:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white)
+}
 
 /* Search Results */
 
