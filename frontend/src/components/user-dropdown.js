@@ -1,21 +1,19 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../reducers/userReducer'
 import { AiFillPlusCircle } from 'react-icons/ai'
 
 const UserDropdown = forwardRef(({ user, displayDropdown }, ref) => {
+  const [displayWalletForm, setDisplayWalletForm] = useState(false)
   const dispatch = useDispatch()
+  console.log(displayWalletForm)
 
   const className = `user-dropdown-menu ${displayDropdown ? 'active' : ''}`
 
   const handleLogout = (event) => {
     event.preventDefault()
     dispatch(logout())
-  }
-
-  const handleClick = () => {
-    console.log('button clicked')
   }
 
   return (
@@ -25,7 +23,7 @@ const UserDropdown = forwardRef(({ user, displayDropdown }, ref) => {
       </p>
       <div className='user-dropdown-menu-funds'>
         <p>Funds: <strong>{user.funds}</strong></p>
-        <div onClick={handleClick}>
+        <div onClick={() => setDisplayWalletForm(true)}>
           <AiFillPlusCircle />
         </div>
       </div>

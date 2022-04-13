@@ -159,6 +159,19 @@ ul {
   }
 }
 
+
+/* Modal */ 
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
 /* Notification */
 
 .notification {
@@ -432,16 +445,6 @@ ul {
 
 
 /* Product Form */
-
-.product-form-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-}
 
 .product-form-container {
   position: relative;
