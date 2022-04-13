@@ -18,10 +18,10 @@ const ProductForm = () => {
   }
 
   return (
-    <div className='product-form-container'>
+    <div className='modal-form-container'>
       <h2>Product details</h2>
       <button
-        className='close-product-form-btn'
+        className='close-modal-form-btn'
         onClick={() => dispatch(closeModal())}
       >
         &times;

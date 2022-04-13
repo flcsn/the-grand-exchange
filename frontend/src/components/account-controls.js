@@ -22,7 +22,7 @@ const AccountControls = ({ user }) => {
       <div className='user-icon-container' onClick={() => setDisplayDropdown(!displayDropdown)}>
         <HiUserCircle className={`user-icon ${displayDropdown && 'active'}`} />
       </div>
-      <UserDropdown user={user} displayDropdown={displayDropdown} ref={dropdownRef} />
+      <UserDropdown user={user} displayDropdown={displayDropdown} setDisplayDropdown={setDisplayDropdown} ref={dropdownRef} />
     </div>
   )
 }

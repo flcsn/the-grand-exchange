@@ -169,8 +169,33 @@ ul {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  z-index: 999;
 }
+
+.modal-form-container {
+  position: relative;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  width: 80%;
+  background-color: var(--color-white)
+}
+
+.modal-form-container > h2 {
+  text-align: center;
+}
+
+.close-modal-form-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: var(--color-gray)
+}
+
+.close-modal-form-btn:hover {
+  color: var(--color-primary-dark);
+}
+
 
 /* Notification */
 
@@ -446,18 +471,6 @@ ul {
 
 /* Product Form */
 
-.product-form-container {
-  position: relative;
-  margin: 50px auto 0 auto;
-  padding: 20px;
-  width: 80%;
-  background-color: var(--color-white)
-}
-
-.product-form-container > h2 {
-  text-align: center;
-}
-
 .product-form {
   display: flex;
   flex-direction: column;
@@ -496,18 +509,6 @@ ul {
 
 .product-form-field-file > input:hover {
   cursor: pointer;
-}
-
-.close-product-form-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 24px;
-  color: var(--color-gray)
-}
-
-.close-product-form-btn:hover {
-  color: var(--color-primary-dark);
 }
 
 .product-form-submit-btn {
