@@ -11,7 +11,7 @@ const ProductPage = ({ product }) => {
   const base64Image = btoa(String.fromCharCode(...new Uint8Array(product.image.data.data)))
 
   const handleBuy = () => {
-    if (user.funds < product.price) {
+    if (user && user.funds < product.price) {
       dispatch(setNotification('error', 'not enough funds'))
       return
     }

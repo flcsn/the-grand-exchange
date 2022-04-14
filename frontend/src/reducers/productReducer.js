@@ -45,7 +45,7 @@ export const buyProduct = (product, user) => {
     try {
       await productService.buyProduct(product.id, user)
       dispatch(getAllProducts())
-      dispatch(subtractFunds(product.price, user))
+      if (user) dispatch(subtractFunds(product.price, user))
       dispatch(setNotification('success', `Successfully bought ${product.title}`))
     } catch (e) {
       console.log(e)
