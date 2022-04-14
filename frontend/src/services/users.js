@@ -17,4 +17,13 @@ const login = async (username, password) => {
   return result.data
 }
 
-export default { register, login }
+const addFunds = async (amount, user) => {
+  const result = await axios.put(`${usersBaseURL}/add/funds`, { amount }, {
+    headers: {
+      Authorization: `bearer ${user.token}`
+    }
+  })
+  return result.data
+}
+
+export default { register, login, addFunds }

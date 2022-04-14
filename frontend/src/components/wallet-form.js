@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { addFunds } from '../reducers/userReducer'
 import { closeModal } from '../reducers/modalReducer'
 
 const WalletForm = () => {
@@ -8,7 +9,9 @@ const WalletForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('added to wallet', event.target.funds.value)
+    console.log('to add', event.target.funds.value)
+    console.log('current user', user)
+    dispatch(addFunds(event.target.funds.value, user))
   }
 
   return (

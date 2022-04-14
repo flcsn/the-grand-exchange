@@ -44,21 +44,14 @@ usersRouter.delete('/:id', async (req, res) => {
   return res.status(204).end()
 })
 
-usersRouter.put('/:id/add/funds', tokenExtractor, userExtractor, async (req, res) => {
-  if (req.user !== req.params.id) {
-    console.log('req.user is ', req.user)
-    console.log('req.params.id is', req.params.id)
-    return res.status(401).json({
-      'message': 'users may only add to their wallets while logged in'
-    })
-  }
-
-  const userToUpdate = await User.findById(req.params.id)
+usersRouter.put('/add/funds', tokenExtractor, userExtractor, async (req, res) => {
+  const userToUpdate = await User.findById(req.user)
 
   console.log('user', userToUpdate)
-  console.log('funds to add', req.body.funds)
+  console.log('req body', req.body)
+  console.log('funds to add', req.body.amount)
 
-  userToUpdate.funds = userToUpdate.funds + req.body.funds
+  userToUpdate.funds = userToUpdate.funds + Number(req.body.amount)
 
   try {
     const updatedUser = await userToUpdate.save()

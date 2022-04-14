@@ -5,13 +5,11 @@ import { setNotification } from './notificationReducer'
 const userReducer = (state = null, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
-      return action.data
     case 'REGISTRATION_SUCCESS':
-      return action.data
     case 'GOT_USER_FROM_LOCAL':
+    case 'UPDATE_SUCCESS':
       return action.data
     case 'LOGIN_FAIL':
-      return state
     case 'REGISTRATION_FAIL':
       return state
     case 'LOG_OUT':
@@ -60,6 +58,24 @@ export const register = (username, password, emailAddress) => {
         type: 'REGISTRATION_FAIL'
       })
       dispatch(setNotification('error', 'Failed to create a new account'))
+    }
+  }
+}
+
+export const addFunds = (amount, user) => {
+  return async dispatch => {
+    try {
+      const updatedUser = await userService.addFunds(amount, user)
+      user.funds = updatedUser.funds
+      window.localStorage.setItem('the-grand-exchange-user', JSON.stringify(user))
+      dispatch({
+        type: 'UPDATE_SUCCESS',
+        data: user
+      })
+      dispatch(setNotification('success', `Successfully added ${amount}!`))
+    } catch (e) {
+      console.log(e)
+      dispatch(setNotification('error', 'Failed to add funds'))
     }
   }
 }
