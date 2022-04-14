@@ -2,13 +2,14 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setNotification } from '../reducers/notificationReducer'
 import { buyProduct } from '../reducers/productReducer'
+import base64ArrayBuffer from '../services/utils'
 
 const ProductPage = ({ product }) => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
   if (!product) return null
 
-  const base64Image = btoa(String.fromCharCode(...new Uint8Array(product.image.data.data)))
+  const base64Image = base64ArrayBuffer(product.image.data.data)
 
   const handleBuy = () => {
     if (user && user.funds < product.price) {
