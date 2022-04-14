@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import base64ArrayBuffer from '../services/utils'
 
 const ProductItem = ({ product }) => {
   // convert image buffer data type to base 64 string for image rendering
-  const base64Image = btoa(String.fromCharCode(...new Uint8Array(product.image.data.data)))
+  const base64Image = base64ArrayBuffer(product.image.data.data)
 
   return (
     <div className='product-item'>
