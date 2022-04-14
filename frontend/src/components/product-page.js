@@ -1,10 +1,25 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setNotification } from '../reducers/notificationReducer'
+import { buyProduct } from '../reducers/productReducer'
 
 const ProductPage = ({ product }) => {
-  console.log(product)
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
   if (!product) return null
 
   const base64Image = btoa(String.fromCharCode(...new Uint8Array(product.image.data.data)))
+
+  const handleBuy = () => {
+    if (user.funds < product.price) {
+      dispatch(setNotification('error', 'not enough funds'))
+      return
+    }
+    console.log('product is', product)
+    console.log('user is', user)
+    dispatch(buyProduct(product, user))
+  }
+
 
   return (
     <div>
@@ -25,7 +40,10 @@ const ProductPage = ({ product }) => {
           <p className='product-price'>₱{product.price}</p>
           <div className='btn-and-stock-container'>
             <div className='buy-btn-container'>
-              <a className='buy-product-btn' href='#'>
+              <a className='buy-product-btn'
+                href='#'
+                onClick={handleBuy}
+              >
                 Buy Now
               </a>
             </div>

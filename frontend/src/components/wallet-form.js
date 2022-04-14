@@ -9,9 +9,7 @@ const WalletForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('to add', event.target.funds.value)
-    console.log('current user', user)
-    dispatch(addFunds(event.target.funds.value, user))
+    dispatch(addFunds(event.target.funds.value, user, true))
   }
 
   return (
@@ -30,7 +28,7 @@ const WalletForm = () => {
       >
         <label>How much would you like to add?</label>
         <input name='funds' type='number' min='1' required />
-        <button type='submit'>Add</button>
+        <button id='add-funds-btn' type='submit'>Add</button>
       </form>
     </div>
   )

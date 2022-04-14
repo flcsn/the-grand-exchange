@@ -1,5 +1,6 @@
 import productService from '../services/products'
 import { setNotification } from './notificationReducer'
+import { subtractFunds } from './userReducer'
 
 const productReducer = (state = [], action) => {
   switch (action.type) {
@@ -31,11 +32,26 @@ export const addProduct = (title, description, stock, price, image) => {
         type: 'SET_PRODUCTS',
         data: updatedProducts
       })
-      dispatch(setNotification('Successfully posted a new product!'))
+      dispatch(setNotification('success', 'Successfully posted a new product!'))
     } catch (e) {
       console.log(e.message)
-      dispatch(setNotification('Failed to post a new product'))
+      dispatch(setNotification('error', 'Failed to post a new product'))
     }
+  }
+}
+
+export const buyProduct = (product, user) => {
+  return async dispatch => {
+    try {
+      await productService.buyProduct(product.id, user)
+      dispatch(getAllProducts())
+      dispatch(subtractFunds(product.price, user))
+      dispatch(setNotification('success', `Successfully bought ${product.title}`))
+    } catch (e) {
+      console.log(e)
+      dispatch(setNotification('error', 'Failed to buy product'))
+    }
+
   }
 }
 

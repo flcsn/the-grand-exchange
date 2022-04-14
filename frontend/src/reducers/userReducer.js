@@ -62,7 +62,7 @@ export const register = (username, password, emailAddress) => {
   }
 }
 
-export const addFunds = (amount, user) => {
+export const addFunds = (amount, user, displayNotif) => {
   return async dispatch => {
     try {
       const updatedUser = await userService.addFunds(amount, user)
@@ -72,11 +72,17 @@ export const addFunds = (amount, user) => {
         type: 'UPDATE_SUCCESS',
         data: user
       })
-      dispatch(setNotification('success', `Successfully added ${amount}!`))
+      if (displayNotif) dispatch(setNotification('success', `Successfully added ${amount}!`))
     } catch (e) {
       console.log(e)
-      dispatch(setNotification('error', 'Failed to add funds'))
+      if (displayNotif) dispatch(setNotification('error', 'Failed to add funds'))
     }
+  }
+}
+
+export const subtractFunds = (amount, user) => {
+  return async dispatch => {
+    dispatch(addFunds(-amount, user, false))
   }
 }
 
