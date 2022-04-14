@@ -7,14 +7,21 @@ import base64ArrayBuffer from '../services/utils'
 const ProductPage = ({ product }) => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
-  if (!product) return null
+  if (!product)
+    return null
 
   const base64Image = base64ArrayBuffer(product.image.data.data)
 
   const handleBuy = () => {
-    if (user && user.funds < product.price) {
-      dispatch(setNotification('error', 'not enough funds'))
-      return
+    if (user) {
+      if (user.username === product.owner.username) {
+        dispatch(setNotification('error', 'cannot purchase products you own'))
+        return
+      }
+      if (user.funds < product.price) {
+        dispatch(setNotification('error', 'not enough funds'))
+        return
+      }
     }
     console.log('product is', product)
     console.log('user is', user)
