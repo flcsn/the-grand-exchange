@@ -80,9 +80,9 @@ export const addFunds = (amount, user, displayNotif) => {
   }
 }
 
-export const subtractFunds = (amount, user) => {
+export const subtractFunds = (amount, quantity, user) => {
   return async dispatch => {
-    dispatch(addFunds(-amount, user, false))
+    dispatch(addFunds(-amount * quantity, user, false))
   }
 }
 

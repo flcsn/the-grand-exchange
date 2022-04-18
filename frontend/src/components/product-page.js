@@ -37,7 +37,7 @@ const ProductPage = ({ product }) => {
     }
 
     console.log(`buying ${quantity} items`)
-    dispatch(buyProduct(product, user))
+    dispatch(buyProduct(product, quantity, user))
   }
 
 

@@ -39,9 +39,9 @@ const addProduct = async (title, description, stock, price, image) => {
   return result.data
 }
 
-const buyProduct = async (id, user) => {
+const buyProduct = async (id, quantity, user) => {
   const result = await axios.put(`${productsBaseURL}/${id}/buy`, {
-    quantity: 1
+    quantity
   }, user && { Authorization: `bearer ${user.token}` }
   )
   return result.data
