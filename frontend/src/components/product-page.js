@@ -60,6 +60,7 @@ const ProductPage = ({ product }) => {
           <p className='product-price'>₱{product.price}</p>
           <form className='buy-product-form' onSubmit={(event) => handleSubmit(event)}>
             <input
+              className='buy-product-quantity'
               type='number'
               name='quantity'
               value={quantity}

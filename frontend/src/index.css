@@ -684,7 +684,11 @@ ul {
 .buy-product-form {
   display: flex;
   gap: 10px;
-  align-items: center;
+}
+
+.buy-product-quantity {
+  padding: 5px 10px;
+  max-width: 70px;
 }
 
 .buy-product-btn {
@@ -856,6 +860,7 @@ ul {
   .buy-product-form {
     align-self: flex-start;
     flex-direction: column;
+    align-items: center;
   }
 
   .product-page-container {
