@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect } from 'react'
 import { HiUserCircle } from 'react-icons/hi'
 
 import UserDropdown from './user-dropdown'
+import WalletForm from './wallet-form'
 
 const AccountControls = ({ user }) => {
   const [displayDropdown, setDisplayDropdown] = useState(false)
+  const [showWalletForm, setShowWalletForm] = useState(false)
   const dropdownRef = useRef()
 
   useEffect(() => {
@@ -22,7 +24,14 @@ const AccountControls = ({ user }) => {
       <div className='user-icon-container' onClick={() => setDisplayDropdown(!displayDropdown)}>
         <HiUserCircle className={`user-icon ${displayDropdown && 'active'}`} />
       </div>
-      <UserDropdown user={user} displayDropdown={displayDropdown} setDisplayDropdown={setDisplayDropdown} ref={dropdownRef} />
+      <UserDropdown
+        user={user}
+        displayDropdown={displayDropdown}
+        setDisplayDropdown={setDisplayDropdown}
+        setShowWalletForm={setShowWalletForm}
+        ref={dropdownRef}
+      />
+      { showWalletForm && <WalletForm closeForm={() => setShowWalletForm(false)} />}
     </div>
   )
 }

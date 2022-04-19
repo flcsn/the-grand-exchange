@@ -163,7 +163,7 @@ ul {
 /* Modal */ 
 
 .modal-backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -454,7 +454,6 @@ ul {
 
 .add-new-product-container {
   width: 50%;
-  text-align: center;
   margin: 20px auto 0 auto;
   background-color: var(--color-primary);
 }

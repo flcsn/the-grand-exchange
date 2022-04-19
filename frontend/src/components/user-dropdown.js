@@ -3,9 +3,8 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../reducers/userReducer'
 import { AiFillPlusCircle } from 'react-icons/ai'
-import { displayModal } from '../reducers/modalReducer'
 
-const UserDropdown = forwardRef(({ user, displayDropdown, setDisplayDropdown }, ref) => {
+const UserDropdown = forwardRef(({ user, displayDropdown, setDisplayDropdown, setShowWalletForm }, ref) => {
   const dispatch = useDispatch()
 
   const className = `user-dropdown-menu ${displayDropdown ? 'active' : ''}`
@@ -16,8 +15,10 @@ const UserDropdown = forwardRef(({ user, displayDropdown, setDisplayDropdown }, 
   }
 
   const openWalletForm = () => {
+    window.scroll(0,0)
+    document.body.classList.toggle('no-scroll')
+    setShowWalletForm(true)
     setDisplayDropdown(false)
-    dispatch(displayModal('walletForm'))
   }
 
   return (

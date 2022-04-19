@@ -15,7 +15,6 @@ import Notification from './components/notification'
 import SearchResults from './components/search-results'
 import Header from './components/header'
 import Footer from './components/footer'
-import ModalContainer from './components/modal-container'
 
 const App = () => {
   const state = useSelector(state => state)
@@ -50,7 +49,6 @@ const App = () => {
   return(
     <div>
       <Notification notification={notification} />
-      <ModalContainer />
       <Header />
       <Routes>
         <Route path='/products/:id' element={<ProductPage product={product}/>} />
