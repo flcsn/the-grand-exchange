@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { buyProduct } from '../reducers/productReducer'
 
-const PurchaseConfirmation = ({ closeForm, product, quantity, user }) => {
+const PurchaseConfirmation = ({ closeForm, product, quantity, user, imageSrc }) => {
   const dispatch = useDispatch()
 
   const close = () => {
@@ -23,18 +23,26 @@ const PurchaseConfirmation = ({ closeForm, product, quantity, user }) => {
 
   return (
     <div className='modal-backdrop'>
-      <div className='modal-form-container-sm'>
+      <div id='purchase-confirmation' className='modal-form-container-sm'>
         <button
           className='close-modal-form-btn'
           onClick={close}
         >
           &times;
         </button>
-        <h2>Confirm Purchase</h2>
-        <p>Buying {quantity} {product.title} for {quantity * product.price}</p>
-        <p>Proceed?</p>
-        <button onClick={confirm}>Yes</button>
-        <button onClick={cancel}>No</button>
+        <h2>Confirm your purchase</h2>
+        <div>
+          <img
+            className='purchase-confirmation-image'
+            src={imageSrc}
+          />
+        </div>
+        <p className='purchase-confirmation-text'>Buy <strong>{quantity} {product.title}</strong> for <strong>{quantity * product.price}</strong>?</p>
+        <p>Your wallet: <strong>{user.funds}</strong></p>
+        <div className='purchase-button-container'>
+          <button className='cancel-button' onClick={cancel}>Cancel</button>
+          <button className='purchase-button' onClick={confirm}>Confirm</button>
+        </div>
       </div>
     </div>
   )

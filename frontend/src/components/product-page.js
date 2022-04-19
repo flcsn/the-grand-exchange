@@ -13,6 +13,7 @@ const ProductPage = ({ product }) => {
     return null
 
   const base64Image = base64ArrayBuffer(product.image.data.data)
+  const imageSrc = `data:${product.image.contentType};base64,${base64Image}`
 
   const handleChange = (event) => {
     const q = event.target.value
@@ -49,8 +50,7 @@ const ProductPage = ({ product }) => {
         <div className='product-page-image-container'>
           <img
             className='product-page-image'
-            src={`data:${product.image.contentType};base64,
-            ${base64Image}`}
+            src={imageSrc}
           />
         </div>
         <div className='product-page-details'>
@@ -87,6 +87,7 @@ const ProductPage = ({ product }) => {
               product={product}
               quantity={quantity}
               user={user}
+              imageSrc={imageSrc}
             />
           }
         </div>
