@@ -740,12 +740,14 @@ ul {
   width: 50%;
   padding: 7px 14px;
   border-radius: 3px;
-  color: var(--color-white);
-  background-color: var(--color-primary-dark);
+  font-weight: 600;
+  color: var(--color-black);
+  background-color: var(--color-primary);
 }
 
 .purchase-button:hover {
-  filter: brightness(90%);
+  color: var(--color-white);
+  background-color: var(--color-primary-dark);
 }
 
 .cancel-button {
