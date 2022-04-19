@@ -1,10 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setNotification } from '../reducers/notificationReducer'
+import { buyProduct } from '../reducers/productReducer'
+import base64ArrayBuffer from '../services/utils'
 
 const ProductPage = ({ product }) => {
-  console.log(product)
-  if (!product) return null
+  const [quantity, setQuantity] = useState(1)
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
+  if (!product)
+    return null
 
-  const base64Image = btoa(String.fromCharCode(...new Uint8Array(product.image.data.data)))
+  const base64Image = base64ArrayBuffer(product.image.data.data)
+
+  const handleChange = (event) => {
+    const q = event.target.value
+
+    if (q > product.stock)
+      setQuantity(product.stock)
+    else
+      setQuantity(q)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    if (user) {
+      if (user.username === product.owner.username) {
+        dispatch(setNotification('error', 'cannot purchase products you own'))
+        return
+      }
+      if (user.funds < product.price) {
+        dispatch(setNotification('error', 'not enough funds'))
+        return
+      }
+    }
+
+    console.log(`buying ${quantity} items`)
+    dispatch(buyProduct(product, quantity, user))
+  }
+
 
   return (
     <div>
@@ -23,17 +58,26 @@ const ProductPage = ({ product }) => {
           </div>
           <p>{product.description}</p>
           <p className='product-price'>₱{product.price}</p>
-          <div className='btn-and-stock-container'>
-            <div className='buy-btn-container'>
-              <a className='buy-product-btn' href='#'>
-                Buy Now
-              </a>
-            </div>
+          <form className='buy-product-form' onSubmit={(event) => handleSubmit(event)}>
+            <input
+              className='buy-product-quantity'
+              type='number'
+              name='quantity'
+              value={quantity}
+              onChange={(event) => handleChange(event)}
+              required
+            />
+            <button
+              className='buy-product-btn'
+              type='submit'
+            >
+              Buy Now
+            </button>
             {product.stock <= 5
-              ? <p className='product-stock'>{product.stock} items left!</p>
+              ? <p className='product-stock'>{product.stock} left!</p>
               : null
             }
-          </div>
+          </form>
         </div>
       </div>
     </div>

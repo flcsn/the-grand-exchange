@@ -39,13 +39,21 @@ const addProduct = async (title, description, stock, price, image) => {
   return result.data
 }
 
+const buyProduct = async (id, quantity, user) => {
+  const result = await axios.put(`${productsBaseURL}/${id}/buy`, {
+    quantity
+  }, user && { Authorization: `bearer ${user.token}` }
+  )
+  return result.data
+}
+
 const getAll = async () => {
   const result = await axios.get(productsBaseURL)
   return result.data
 }
 
 const getOne = async (id) => {
-  const result = await axios.get(`${productsBaseURL}/${id}`)
+  const result = await axios.get(`${productsBaseURL}/${id}/buy`)
   return result.data
 }
 
@@ -61,6 +69,7 @@ export default {
   extractToken,
   removeToken,
   addProduct,
+  buyProduct,
   getAll,
   getOne,
   search
