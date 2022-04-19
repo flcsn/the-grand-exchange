@@ -1,18 +1,24 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { displayModal } from '../reducers/modalReducer'
+import React, { useState } from 'react'
 
 import ProductList from './product-list'
+import ProductForm from './product-form'
 
 const UserProducts = ({ products }) => {
-  const dispatch = useDispatch()
+  const [showProductForm, setShowProductForm] = useState(false)
+
+  const openProductForm = () => {
+    window.scroll(0,0)
+    document.body.classList.toggle('no-scroll')
+    setShowProductForm(true)
+  }
 
   return (
     <div>
       <div className='add-new-product-container'>
-        <button onClick={() => dispatch(displayModal('productForm'))}>
+        <button onClick={openProductForm}>
           Add new product
         </button>
+        { showProductForm && <ProductForm closeForm={() => setShowProductForm(false)}/> }
       </div>
       <ProductList products={products} />
     </div>

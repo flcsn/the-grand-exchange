@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setNotification } from '../reducers/notificationReducer'
-import { buyProduct } from '../reducers/productReducer'
 import base64ArrayBuffer from '../services/utils'
+import PurchaseConfirmation from './purchase-confirmation'
 
 const ProductPage = ({ product }) => {
   const [quantity, setQuantity] = useState(1)
+  const [showConfirmation, setShowConfirmation] = useState(false)
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
   if (!product)
     return null
 
   const base64Image = base64ArrayBuffer(product.image.data.data)
+  const imageSrc = `data:${product.image.contentType};base64,${base64Image}`
 
   const handleChange = (event) => {
     const q = event.target.value
@@ -36,8 +38,9 @@ const ProductPage = ({ product }) => {
       }
     }
 
-    console.log(`buying ${quantity} items`)
-    dispatch(buyProduct(product, quantity, user))
+    window.scroll(0,0)
+    document.body.classList.toggle('no-scroll')
+    setShowConfirmation(true)
   }
 
 
@@ -47,8 +50,7 @@ const ProductPage = ({ product }) => {
         <div className='product-page-image-container'>
           <img
             className='product-page-image'
-            src={`data:${product.image.contentType};base64,
-            ${base64Image}`}
+            src={imageSrc}
           />
         </div>
         <div className='product-page-details'>
@@ -70,6 +72,7 @@ const ProductPage = ({ product }) => {
             <button
               className='buy-product-btn'
               type='submit'
+              disabled={product.stock < 1}
             >
               Buy Now
             </button>
@@ -78,6 +81,15 @@ const ProductPage = ({ product }) => {
               : null
             }
           </form>
+          { showConfirmation &&
+            <PurchaseConfirmation
+              closeForm={() => setShowConfirmation(false)}
+              product={product}
+              quantity={quantity}
+              user={user}
+              imageSrc={imageSrc}
+            />
+          }
         </div>
       </div>
     </div>
