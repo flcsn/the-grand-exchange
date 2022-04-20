@@ -1,34 +1,28 @@
 import React from 'react'
+import UserProductListItem from './user-product-list-item'
 
 const UserProductList = ({ products }) => {
   return (
     <table>
       <thead>
         <tr>
-          <td>
+          <th>
             Title
-          </td>
-          <td>
+          </th>
+          <th>
             Price
-          </td>
-          <td>
+          </th>
+          <th>
             Stock
-          </td>
+          </th>
+          <th>
+            Actions
+          </th>
         </tr>
       </thead>
       <tbody>
         {products.map(product =>
-          <tr key={product.id}>
-            <td>
-              {product.title}
-            </td>
-            <td>
-              {product.price}
-            </td>
-            <td>
-              {product.stock}
-            </td>
-          </tr>)
+          <UserProductListItem key={product.id} product={product} />)
         }
       </tbody>
     </table>
