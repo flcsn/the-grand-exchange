@@ -47,7 +47,7 @@ const App = () => {
     : null
 
   return(
-    <div>
+    <div className='app-container'>
       <Notification notification={notification} />
       <Header />
       <Routes>
