@@ -13,7 +13,7 @@ const UserProducts = ({ products }) => {
   }
 
   return (
-    <div>
+    <div className='body-container'>
       <div className='add-new-product-container'>
         <button onClick={openProductForm}>
           Add new product

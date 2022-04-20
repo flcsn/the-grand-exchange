@@ -45,7 +45,7 @@ const ProductPage = ({ product }) => {
 
 
   return (
-    <div>
+    <div className='body-container'>
       <div className='product-page-container'>
         <div className='product-page-image-container'>
           <img

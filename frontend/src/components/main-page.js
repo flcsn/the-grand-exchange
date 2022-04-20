@@ -14,7 +14,7 @@ const MainPage = () => {
   }, [])
 
   return (
-    <div>
+    <div className='body-container'>
       <ProductList products={products} />
     </div>
   )

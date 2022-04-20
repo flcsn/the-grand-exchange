@@ -19,7 +19,7 @@ const SearchResults = () => {
   }, [title])
 
   return (
-    <div>
+    <div className='body-container'>
       <div className='search-status'>
         { loading
           ? <p>Searching for products that match &apos;{title}&apos;</p>
