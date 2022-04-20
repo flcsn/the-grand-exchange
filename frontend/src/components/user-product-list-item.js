@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaEdit } from 'react-icons/fa'
+import { FaEdit, FaRegEye } from 'react-icons/fa'
 import { RiDeleteBinLine } from 'react-icons/ri'
 
 
@@ -17,10 +17,13 @@ const UserProductListItem = ({ product }) => {
       </td>
       <td>
         <div className='td-icon-container'>
-          <button className='td-icon td-edit'>
+          <button className='td-icon'>
+            <FaRegEye />
+          </button>
+          <button className='td-icon'>
             <FaEdit />
           </button>
-          <button className='td-icon td-delete'>
+          <button className='td-icon'>
             <RiDeleteBinLine />
           </button>
         </div>
