@@ -66,6 +66,7 @@ const ProductPage = ({ product }) => {
               type='number'
               name='quantity'
               value={quantity}
+              min='1'
               onChange={(event) => handleChange(event)}
               required
             />
