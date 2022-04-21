@@ -35,6 +35,7 @@ const ProductForm = ({ closeForm, prepopulate }) => {
       stock,
       price
     ))
+    close()
   }
 
   const handleAddProduct = (event) => {
@@ -46,6 +47,7 @@ const ProductForm = ({ closeForm, prepopulate }) => {
       price,
       event.target.image.files[0],
     ))
+    close()
   }
 
   return (
