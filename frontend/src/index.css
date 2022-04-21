@@ -757,9 +757,9 @@ table tr:nth-child(even) {
   margin: auto 0;
 }
 
-/* Purchase Confirmation */
+/* Confirmations */
 
-#purchase-confirmation {
+.confirmation-container {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -776,12 +776,12 @@ table tr:nth-child(even) {
   letter-spacing: -0.5px;
 }
 
-.purchase-button-container {
+.confirmation-button-container {
   display: flex;
   gap: 10px;
 }
 
-.purchase-button {
+.confirm-button {
   width: 50%;
   padding: 7px 14px;
   border-radius: 3px;
@@ -790,9 +790,23 @@ table tr:nth-child(even) {
   background-color: var(--color-primary);
 }
 
-.purchase-button:hover {
+.primary-button {
+  color: var(--color-black);
+  background-color: var(--color-primary);
+}
+
+.primary-button:hover {
   color: var(--color-white);
   background-color: var(--color-primary-dark);
+}
+
+.delete-button {
+  color: var(--color-white);
+  background-color: red;
+}
+
+.delete-button:hover {
+  background-color: #8b0000;
 }
 
 .cancel-button {

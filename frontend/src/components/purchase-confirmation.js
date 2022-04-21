@@ -23,7 +23,7 @@ const PurchaseConfirmation = ({ closeForm, product, quantity, user, imageSrc }) 
 
   return (
     <div className='modal-backdrop'>
-      <div id='purchase-confirmation' className='modal-form-container-sm'>
+      <div className='modal-form-container-sm confirmation-container'>
         <button
           className='close-modal-form-btn'
           onClick={close}
@@ -39,9 +39,9 @@ const PurchaseConfirmation = ({ closeForm, product, quantity, user, imageSrc }) 
         </div>
         <p className='purchase-confirmation-text'>Buy <strong>{quantity} {product.title}</strong> for <strong>{quantity * product.price}</strong>?</p>
         <p>Your wallet: <strong>{user.funds}</strong></p>
-        <div className='purchase-button-container'>
+        <div className='confirmation-button-container'>
           <button className='cancel-button' onClick={cancel}>Cancel</button>
-          <button className='purchase-button' onClick={confirm}>Confirm</button>
+          <button className='confirm-button primary-button' onClick={confirm}>Confirm</button>
         </div>
       </div>
     </div>
