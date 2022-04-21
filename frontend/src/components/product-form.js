@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addProduct } from '../reducers/productReducer'
 
-const ProductForm = ({ closeForm }) => {
+const ProductForm = ({ closeForm, prepopulate }) => {
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [stock, setStock] = useState(1)
+  const [price, setPrice] = useState(1)
+
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (prepopulate) {
+      setTitle(prepopulate.title)
+      setDescription(prepopulate.description)
+      setStock(prepopulate.stock)
+      setPrice(prepopulate.price)
+    }
+  }, [prepopulate])
+
+  console.log('prepopulate', prepopulate)
 
   const close = () => {
     document.body.classList.toggle('no-scroll')
@@ -13,10 +29,10 @@ const ProductForm = ({ closeForm }) => {
   const handleAddProduct = (event) => {
     event.preventDefault()
     dispatch(addProduct(
-      event.target.title.value,
-      event.target.description.value,
-      event.target.stock.value,
-      event.target.price.value,
+      title,
+      description,
+      stock,
+      price,
       event.target.image.files[0],
     ))
   }
@@ -38,26 +54,54 @@ const ProductForm = ({ closeForm }) => {
         >
           <div className='product-form-field'>
             <label>Title</label>
-            <input type='text' name='title' required />
+            <input
+              type='text'
+              name='title'
+              value={title}
+              onChange={({ target }) => setTitle(target.value)}
+              required
+            />
           </div>
           <div className='product-form-field'>
             <label>Description</label>
-            <input type='text' name='description' required />
+            <input
+              type='text'
+              name='description'
+              value={description}
+              onChange={({ target }) => setDescription(target.value)}
+              required
+            />
           </div>
           <div className='product-form-field-2-col'>
             <div className='product-form-field'>
               <label>Stock</label>
-              <input type='number' name='stock' min='0' required />
+              <input
+                type='number'
+                name='stock'
+                value={stock}
+                onChange={({ target }) => setStock(target.value)}
+                min='1'
+                required
+              />
             </div>
             <div className='product-form-field'>
               <label>Price</label>
-              <input type='number' name='price' min='1' required />
+              <input
+                type='number'
+                name='price'
+                value={price}
+                onChange={({ target }) => setPrice(target.value)}
+                min='1'
+                required
+              />
             </div>
           </div>
+          { !prepopulate &&
           <div className='product-form-field product-form-field-file'>
             <label>Image</label>
             <input type='file' name='image' required />
           </div>
+          }
           <button
             className='product-form-submit-btn'
             type='submit'

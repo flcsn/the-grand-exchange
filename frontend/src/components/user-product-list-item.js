@@ -37,7 +37,7 @@ const UserProductListItem = ({ product }) => {
           <button className='td-icon' onClick={handleEdit}>
             <FaEdit />
           </button>
-          { edit && <ProductForm closeForm={() => setEdit(false)}/>}
+          { edit && <ProductForm closeForm={() => setEdit(false)} prepopulate={product}/>}
           <button className='td-icon' onClick={handleDelete}>
             <RiDeleteBinLine />
           </button>
