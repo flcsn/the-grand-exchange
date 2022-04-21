@@ -39,6 +39,21 @@ const addProduct = async (title, description, stock, price, image) => {
   return result.data
 }
 
+const editProduct = async (id, title, description, stock, price) => {
+  const data = { id, title, description, stock, price }
+
+  const result = await axios.put(
+    productsBaseURL,
+    data,
+    {
+      headers: {
+        Authorization : token
+      }
+    }
+  )
+  return result.data
+}
+
 const buyProduct = async (id, quantity, user) => {
   const result = await axios.put(`${productsBaseURL}/${id}/buy`, {
     quantity
@@ -69,6 +84,7 @@ export default {
   extractToken,
   removeToken,
   addProduct,
+  editProduct,
   buyProduct,
   getAll,
   getOne,

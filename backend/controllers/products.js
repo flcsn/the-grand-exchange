@@ -106,6 +106,25 @@ productsRouter.delete('/:id', async (req, res) => {
   return res.status(204).end()
 })
 
+productsRouter.put('/', tokenExtractor, userExtractor, async (req, res) => {
+  let productInDB = await Product.findById(req.body.id)
+
+  productInDB.title = req.body.title
+  productInDB.description = req.body.description
+  productInDB.stock = req.body.stock
+  productInDB.price = req.body.price
+
+  try {
+    const updatedProduct = await productInDB.save()
+    return res.status(201).json(updatedProduct)
+  } catch (e) {
+    console.log(e)
+    return res.status(400).json({
+      error: e.message
+    })
+  }
+})
+
 productsRouter.put('/:id/buy', tokenExtractor, async (req, res) => {
   const token = req.token
   let userCustomer = null

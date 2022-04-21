@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addProduct } from '../reducers/productReducer'
+import { addProduct, editProduct } from '../reducers/productReducer'
 
 const ProductForm = ({ closeForm, prepopulate }) => {
   const [title, setTitle] = useState('')
@@ -26,6 +26,17 @@ const ProductForm = ({ closeForm, prepopulate }) => {
     closeForm()
   }
 
+  const handleEditProduct = (event) => {
+    event.preventDefault()
+    dispatch(editProduct(
+      prepopulate.id,
+      title,
+      description,
+      stock,
+      price
+    ))
+  }
+
   const handleAddProduct = (event) => {
     event.preventDefault()
     dispatch(addProduct(
@@ -49,7 +60,7 @@ const ProductForm = ({ closeForm, prepopulate }) => {
         </button>
         <form
           className='product-form'
-          onSubmit={handleAddProduct}
+          onSubmit={ prepopulate ? handleEditProduct : handleAddProduct }
           encType='multipart/form-data'
         >
           <div className='product-form-field'>
@@ -106,7 +117,7 @@ const ProductForm = ({ closeForm, prepopulate }) => {
             className='product-form-submit-btn'
             type='submit'
           >
-            Add product
+            { prepopulate ? 'Edit' : 'Add' } product
           </button>
         </form>
       </div>

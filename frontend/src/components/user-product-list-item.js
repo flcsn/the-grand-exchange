@@ -9,9 +9,15 @@ import ProductForm from './product-form'
 const UserProductListItem = ({ product }) => {
   const [edit, setEdit] = useState(false)
 
+  const openEditForm = () => {
+    window.scroll(0,0)
+    document.body.classList.toggle('no-scroll')
+    setEdit(true)
+  }
+
   const handleEdit = () => {
     console.log('edit')
-    setEdit(true)
+    openEditForm()
   }
 
   const handleDelete = () => {

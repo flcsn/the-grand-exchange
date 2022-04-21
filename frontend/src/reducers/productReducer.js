@@ -40,6 +40,23 @@ export const addProduct = (title, description, stock, price, image) => {
   }
 }
 
+export const editProduct = (id, title, description, stock, price) => {
+  return async dispatch => {
+    try {
+      await productService.editProduct(id, title, description, stock, price)
+      const updatedProducts = await productService.getAll()
+      dispatch({
+        type: 'SET_PRODUCTS',
+        data: updatedProducts
+      })
+      dispatch(setNotification('success', 'Successfully edited product!'))
+    } catch (e) {
+      console.log(e.message)
+      dispatch(setNotification('error', 'Failed to edit product'))
+    }
+  }
+}
+
 export const buyProduct = (product, quantity, user) => {
   return async dispatch => {
     try {
