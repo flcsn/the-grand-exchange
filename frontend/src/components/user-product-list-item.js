@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { FaEdit, FaRegEye } from 'react-icons/fa'
 import { RiDeleteBinLine } from 'react-icons/ri'
 
@@ -17,9 +18,9 @@ const UserProductListItem = ({ product }) => {
       </td>
       <td>
         <div className='td-icon-container'>
-          <button className='td-icon'>
+          <Link to={`/products/${product.id}`} className='td-icon'>
             <FaRegEye />
-          </button>
+          </Link>
           <button className='td-icon'>
             <FaEdit />
           </button>
