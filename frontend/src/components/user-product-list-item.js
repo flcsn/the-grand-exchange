@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaEdit, FaRegEye } from 'react-icons/fa'
 import { RiDeleteBinLine } from 'react-icons/ri'
 
+import ProductForm from './product-form'
+
 
 const UserProductListItem = ({ product }) => {
+  const [edit, setEdit] = useState(false)
+
+  const handleEdit = () => {
+    console.log('edit')
+    setEdit(true)
+  }
+
+  const handleDelete = () => {
+    console.log('delete')
+  }
+
   return (
     <tr>
       <td>
@@ -21,10 +34,11 @@ const UserProductListItem = ({ product }) => {
           <Link to={`/products/${product.id}`} className='td-icon'>
             <FaRegEye />
           </Link>
-          <button className='td-icon'>
+          <button className='td-icon' onClick={handleEdit}>
             <FaEdit />
           </button>
-          <button className='td-icon'>
+          { edit && <ProductForm closeForm={() => setEdit(false)}/>}
+          <button className='td-icon' onClick={handleDelete}>
             <RiDeleteBinLine />
           </button>
         </div>
