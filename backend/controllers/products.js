@@ -97,7 +97,7 @@ productsRouter.delete('/', async (req, res) => {
   return res.status(204).end()
 })
 
-productsRouter.delete('/:id', async (req, res) => {
+productsRouter.delete('/:id', tokenExtractor, userExtractor, async (req, res) => {
   const product = await Product.findById(req.params.id)
   if (!product)
     return res.status(404).end()

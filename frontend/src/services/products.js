@@ -63,7 +63,11 @@ const buyProduct = async (id, quantity, user) => {
 }
 
 const deleteProduct = async (id) => {
-  const result = await axios.delete(`${productsBaseURL}/${id}`)
+  const result = await axios.delete(`${productsBaseURL}/${id}`, {
+    headers: {
+      Authorization: token
+    }
+  })
   return result.data
 }
 
