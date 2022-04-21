@@ -62,6 +62,11 @@ const buyProduct = async (id, quantity, user) => {
   return result.data
 }
 
+const deleteProduct = async (id) => {
+  const result = await axios.delete(`${productsBaseURL}/${id}`)
+  return result.data
+}
+
 const getAll = async () => {
   const result = await axios.get(productsBaseURL)
   return result.data
@@ -86,6 +91,7 @@ export default {
   addProduct,
   editProduct,
   buyProduct,
+  deleteProduct,
   getAll,
   getOne,
   search

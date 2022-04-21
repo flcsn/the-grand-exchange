@@ -1,6 +1,9 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { deleteProduct } from '../reducers/productReducer'
 
 const DeleteConfirmation = ({ closeForm, product }) => {
+  const dispatch = useDispatch()
 
   const close = () => {
     document.body.classList.toggle('no-scroll')
@@ -9,6 +12,7 @@ const DeleteConfirmation = ({ closeForm, product }) => {
 
   const confirm = () => {
     console.log(`deleting ${product.title}`)
+    dispatch(deleteProduct(product))
     close()
   }
 

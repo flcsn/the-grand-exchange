@@ -68,7 +68,23 @@ export const buyProduct = (product, quantity, user) => {
       console.log(e)
       dispatch(setNotification('error', 'Failed to buy product'))
     }
+  }
+}
 
+export const deleteProduct = (product) => {
+  return async dispatch => {
+    try {
+      await productService.deleteProduct(product.id)
+      const updatedProducts = await productService.getAll()
+      dispatch({
+        type: 'SET_PRODUCTS',
+        data: updatedProducts
+      })
+      dispatch(setNotification('success', `Successfully deleted product ${product.title}!`))
+    } catch (e) {
+      console.log(e)
+      dispatch(setNotification('error', `Failed to delete product ${product.title}`))
+    }
   }
 }
 
