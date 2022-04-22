@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import productService from '../services/products'
 
-import ProductList from './product-list'
-import ProductListSkeleton from './product-list-skeleton'
+import ProductList from './ProductList'
+import ProductListSkeleton from './ProductListSkeleton'
 
 const SearchResults = () => {
   const [products, setProducts] = useState([])

@@ -1,5 +1,5 @@
 import React from 'react'
-import UserProductListItem from './user-product-list-item'
+import UserProductListItem from './UserProductListItem'
 
 const UserProductList = ({ products }) => {
   return (

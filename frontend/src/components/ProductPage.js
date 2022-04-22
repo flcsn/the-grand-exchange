@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setNotification } from '../reducers/notificationReducer'
 import base64ArrayBuffer from '../services/utils'
-import PurchaseConfirmation from './purchase-confirmation'
+import PurchaseConfirmation from './PurchaseConfirmation'
 
 const ProductPage = ({ product }) => {
   const [quantity, setQuantity] = useState(1)

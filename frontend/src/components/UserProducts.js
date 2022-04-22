@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import ProductForm from './product-form'
-import UserProductList from './user-product-list'
+import ProductForm from './ProductForm'
+import UserProductList from './UserProductList'
 
 const UserProducts = ({ products }) => {
   const [showProductForm, setShowProductForm] = useState(false)
