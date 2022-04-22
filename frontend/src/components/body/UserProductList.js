@@ -10,7 +10,7 @@ const UserProductList = ({ products }) => {
             Title
           </th>
           <th>
-            Price
+            Price (₱)
           </th>
           <th>
             Stock

@@ -39,10 +39,10 @@ const UserProductListItem = ({ product }) => {
         {product.title}
       </td>
       <td className='td-right'>
-        {product.price}
+        {product.price.toLocaleString()}
       </td>
       <td className='td-right'>
-        {product.stock}
+        {product.stock.toLocaleString()}
       </td>
       <td>
         <div className='td-icon-container'>

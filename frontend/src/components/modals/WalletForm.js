@@ -26,7 +26,7 @@ const WalletForm = ({ closeForm }) => {
         >
           &times;
         </button>
-        <p>You currently have: <strong>{user.funds}</strong></p>
+        <p>You currently have: <strong>₱{user.funds.toLocaleString()}</strong></p>
         <form
           className='wallet-form'
           onSubmit={(event) => handleSubmit(event)}

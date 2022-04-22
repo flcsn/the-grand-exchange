@@ -59,7 +59,7 @@ const ProductPage = ({ product }) => {
             <p className='product-owner'>sold by {product.owner.username}</p>
           </div>
           <p>{product.description}</p>
-          <p className='product-price'>₱{product.price}</p>
+          <p className='product-price'>₱{product.price.toLocaleString()}</p>
           <form className='buy-product-form' onSubmit={(event) => handleSubmit(event)}>
             <input
               className='buy-product-quantity'

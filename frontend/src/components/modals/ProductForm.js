@@ -98,7 +98,7 @@ const ProductForm = ({ closeForm, prepopulate }) => {
               />
             </div>
             <div className='product-form-field'>
-              <label>Price</label>
+              <label>Price (₱)</label>
               <input
                 type='number'
                 name='price'

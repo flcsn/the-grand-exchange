@@ -27,7 +27,7 @@ const UserDropdown = forwardRef(({ user, displayDropdown, setDisplayDropdown, se
         {user.username}
       </p>
       <div className='user-dropdown-menu-funds'>
-        <p>Funds: <strong>{user.funds}</strong></p>
+        <p>Funds: <strong>₱{user.funds.toLocaleString()}</strong></p>
         <div onClick={openWalletForm}>
           <AiFillPlusCircle />
         </div>
