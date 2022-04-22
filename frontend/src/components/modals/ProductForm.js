@@ -105,6 +105,7 @@ const ProductForm = ({ closeForm, prepopulate }) => {
                 value={price}
                 onChange={({ target }) => setPrice(target.value)}
                 min='1'
+                max='9999999'
                 required
               />
             </div>

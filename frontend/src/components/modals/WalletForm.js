@@ -14,6 +14,7 @@ const WalletForm = ({ closeForm }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     dispatch(addFunds(event.target.funds.value, user, true))
+    close()
   }
 
   return (
