@@ -12,6 +12,7 @@ const ProductPage = ({ product }) => {
   if (!product)
     return null
 
+  const inStock = product.stock > 0
   const base64Image = base64ArrayBuffer(product.image.data.data)
   const imageSrc = `data:${product.image.contentType};base64,${base64Image}`
 
@@ -71,9 +72,9 @@ const ProductPage = ({ product }) => {
               required
             />
             <button
-              className='buy-product-btn'
+              className={inStock ? 'buy-product-btn' : 'disabled-btn' }
               type='submit'
-              disabled={product.stock < 1}
+              disabled={!inStock}
             >
               Buy Now
             </button>

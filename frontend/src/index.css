@@ -763,6 +763,13 @@ table tr:nth-child(even) {
   background-color: #8b0000;
 }
 
+.disabled-btn {
+  cursor: default;
+  padding: 7px 14px;
+  border-radius: 3px;
+  background-color: var(--color-gray-light);
+}
+
 .product-stock {
   height: fit-content;
   font-size: 12px;
