@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import productService from '../services/products'
+import productService from '../../services/products'
 
-import ProductList from './product-list'
-import ProductListSkeleton from './product-list-skeleton'
+import ProductList from './ProductList'
+import ProductListSkeleton from './skeletons/ProductListSkeleton'
 
 const SearchResults = () => {
   const [products, setProducts] = useState([])
@@ -19,7 +19,7 @@ const SearchResults = () => {
   }, [title])
 
   return (
-    <div>
+    <div className='body-container'>
       <div className='search-status'>
         { loading
           ? <p>Searching for products that match &apos;{title}&apos;</p>

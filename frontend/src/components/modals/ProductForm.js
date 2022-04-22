@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addProduct, editProduct } from '../reducers/productReducer'
+import { addProduct, editProduct } from '../../reducers/productReducer'
 
 const ProductForm = ({ closeForm, prepopulate }) => {
   const [title, setTitle] = useState('')
@@ -98,13 +98,14 @@ const ProductForm = ({ closeForm, prepopulate }) => {
               />
             </div>
             <div className='product-form-field'>
-              <label>Price</label>
+              <label>Price (₱)</label>
               <input
                 type='number'
                 name='price'
                 value={price}
                 onChange={({ target }) => setPrice(target.value)}
                 min='1'
+                max='9999999'
                 required
               />
             </div>

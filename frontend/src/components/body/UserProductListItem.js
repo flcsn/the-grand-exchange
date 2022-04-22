@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { FaEdit, FaRegEye } from 'react-icons/fa'
 import { RiDeleteBinLine } from 'react-icons/ri'
 
-import ProductForm from './product-form'
-import DeleteConfirmation from './delete-confirmation'
+import ProductForm from '../modals/ProductForm'
+import DeleteConfirmation from '../modals/DeleteConfirmation'
 
 
 const UserProductListItem = ({ product }) => {
@@ -39,10 +39,10 @@ const UserProductListItem = ({ product }) => {
         {product.title}
       </td>
       <td className='td-right'>
-        {product.price}
+        {product.price.toLocaleString()}
       </td>
       <td className='td-right'>
-        {product.stock}
+        {product.stock.toLocaleString()}
       </td>
       <td>
         <div className='td-icon-container'>

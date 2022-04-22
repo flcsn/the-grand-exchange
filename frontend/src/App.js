@@ -5,16 +5,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveUserFromLocalStorage } from './reducers/userReducer'
 import { getAllProducts } from './reducers/productReducer'
 
-import LandingPage from './components/landing-page'
-import LoginPage from './components/login-page'
-import RegistrationPage from './components/registration-page'
-import MainPage from './components/main-page'
-import ProductPage from './components/product-page'
-import UserProducts from './components/user-products'
-import Notification from './components/notification'
-import SearchResults from './components/search-results'
-import Header from './components/header'
-import Footer from './components/footer'
+import LandingPage from './components/LandingPage'
+import LoginPage from './components/LoginPage'
+import RegistrationPage from './components/RegistrationPage'
+import MainPage from './components/body/MainPage'
+import ProductPage from './components/body/ProductPage'
+import UserProducts from './components/body/UserProducts'
+import Notification from './components/notification/Notification'
+import SearchResults from './components/body/SearchResults'
+import Header from './components/header/Header'
+import Footer from './components/footer/Footer'
 
 const App = () => {
   const state = useSelector(state => state)
@@ -47,7 +47,7 @@ const App = () => {
     : null
 
   return(
-    <div>
+    <div className='app-container'>
       <Notification notification={notification} />
       <Header />
       <Routes>

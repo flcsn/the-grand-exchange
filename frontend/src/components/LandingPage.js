@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import SearchBox from './search-box'
+import SearchBox from './SearchBox'
 
 const LandingPage = () => {
 

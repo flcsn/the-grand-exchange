@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { buyProduct } from '../reducers/productReducer'
+import { buyProduct } from '../../reducers/productReducer'
 
 const PurchaseConfirmation = ({ closeForm, product, quantity, user, imageSrc }) => {
   const dispatch = useDispatch()
@@ -37,8 +37,8 @@ const PurchaseConfirmation = ({ closeForm, product, quantity, user, imageSrc }) 
             src={imageSrc}
           />
         </div>
-        <p className='purchase-confirmation-text'>Buy <strong>{quantity} {product.title}</strong> for <strong>{quantity * product.price}</strong>?</p>
-        <p>Your wallet: <strong>{user.funds}</strong></p>
+        <p className='purchase-confirmation-text'>Buy <strong>{quantity} {product.title}</strong> for <strong>₱{(quantity * product.price).toLocaleString()}</strong>?</p>
+        { user && <p>Your wallet: <strong>₱{user.funds.toLocaleString()}</strong></p> }
         <div className='confirmation-button-container'>
           <button className='cancel-button' onClick={cancel}>Cancel</button>
           <button className='confirm-button primary-button' onClick={confirm}>Confirm</button>

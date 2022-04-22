@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setNotification } from '../reducers/notificationReducer'
-import base64ArrayBuffer from '../services/utils'
-import PurchaseConfirmation from './purchase-confirmation'
+import { setNotification } from '../../reducers/notificationReducer'
+import base64ArrayBuffer from '../../services/utils'
+import PurchaseConfirmation from '../modals/PurchaseConfirmation'
 
 const ProductPage = ({ product }) => {
   const [quantity, setQuantity] = useState(1)
@@ -12,6 +12,7 @@ const ProductPage = ({ product }) => {
   if (!product)
     return null
 
+  const inStock = product.stock > 0
   const base64Image = base64ArrayBuffer(product.image.data.data)
   const imageSrc = `data:${product.image.contentType};base64,${base64Image}`
 
@@ -45,7 +46,7 @@ const ProductPage = ({ product }) => {
 
 
   return (
-    <div>
+    <div className='body-container'>
       <div className='product-page-container'>
         <div className='product-page-image-container'>
           <img
@@ -59,20 +60,21 @@ const ProductPage = ({ product }) => {
             <p className='product-owner'>sold by {product.owner.username}</p>
           </div>
           <p>{product.description}</p>
-          <p className='product-price'>₱{product.price}</p>
+          <p className='product-price'>₱{product.price.toLocaleString()}</p>
           <form className='buy-product-form' onSubmit={(event) => handleSubmit(event)}>
             <input
               className='buy-product-quantity'
               type='number'
               name='quantity'
               value={quantity}
+              min='1'
               onChange={(event) => handleChange(event)}
               required
             />
             <button
-              className='buy-product-btn'
+              className={inStock ? 'buy-product-btn' : 'disabled-btn' }
               type='submit'
-              disabled={product.stock < 1}
+              disabled={!inStock}
             >
               Buy Now
             </button>

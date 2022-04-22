@@ -72,7 +72,7 @@ export const addFunds = (amount, user, displayNotif) => {
         type: 'UPDATE_SUCCESS',
         data: user
       })
-      if (displayNotif) dispatch(setNotification('success', `Successfully added ${amount}!`))
+      if (displayNotif) dispatch(setNotification('success', `Successfully added ₱${amount}!`))
     } catch (e) {
       console.log(e)
       if (displayNotif) dispatch(setNotification('error', 'Failed to add funds'))

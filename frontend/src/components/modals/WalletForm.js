@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addFunds } from '../reducers/userReducer'
+import { addFunds } from '../../reducers/userReducer'
 
 const WalletForm = ({ closeForm }) => {
   const user = useSelector(state => state.user)
@@ -14,6 +14,7 @@ const WalletForm = ({ closeForm }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     dispatch(addFunds(event.target.funds.value, user, true))
+    close()
   }
 
   return (
@@ -26,7 +27,7 @@ const WalletForm = ({ closeForm }) => {
         >
           &times;
         </button>
-        <p>You currently have: <strong>{user.funds}</strong></p>
+        <p>You currently have: <strong>₱{user.funds.toLocaleString()}</strong></p>
         <form
           className='wallet-form'
           onSubmit={(event) => handleSubmit(event)}

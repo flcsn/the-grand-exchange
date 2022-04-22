@@ -1,5 +1,5 @@
 import React from 'react'
-import UserProductListItem from './user-product-list-item'
+import UserProductListItem from './UserProductListItem'
 
 const UserProductList = ({ products }) => {
   return (
@@ -10,7 +10,7 @@ const UserProductList = ({ products }) => {
             Title
           </th>
           <th>
-            Price
+            Price (₱)
           </th>
           <th>
             Stock

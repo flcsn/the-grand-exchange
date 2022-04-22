@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import ProductForm from './product-form'
-import UserProductList from './user-product-list'
+import ProductForm from '../modals/ProductForm'
+import UserProductList from './UserProductList'
 
 const UserProducts = ({ products }) => {
   const [showProductForm, setShowProductForm] = useState(false)
@@ -13,7 +13,7 @@ const UserProducts = ({ products }) => {
   }
 
   return (
-    <div>
+    <div className='body-container'>
       <div className='add-new-product-container'>
         <button onClick={openProductForm}>
           Add new product

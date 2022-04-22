@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { HiUserCircle } from 'react-icons/hi'
 
-import UserDropdown from './user-dropdown'
-import WalletForm from './wallet-form'
+import UserDropdown from './UserDropdown'
+import WalletForm from '../modals/WalletForm'
 
 const AccountControls = ({ user }) => {
   const [displayDropdown, setDisplayDropdown] = useState(false)

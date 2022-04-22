@@ -251,6 +251,20 @@ table tr:nth-child(even) {
 }
 
 
+/* App Container */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+.body-container {
+  flex-grow: 1;
+}
+
+
 /* Notification */
 
 .notification {
@@ -747,6 +761,13 @@ table tr:nth-child(even) {
 .buy-product-btn:hover {
   cursor: pointer;
   background-color: #8b0000;
+}
+
+.disabled-btn {
+  cursor: default;
+  padding: 7px 14px;
+  border-radius: 3px;
+  background-color: var(--color-gray-light);
 }
 
 .product-stock {

@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/sample-logo.PNG'
 import { useSelector } from 'react-redux'
-import AccountControls from './account-controls'
 import { HiUserAdd } from 'react-icons/hi'
-import SearchBox from './search-box'
+
+import logo from '../../assets/sample-logo.PNG'
+import AccountControls from './AccountControls'
+import SearchBox from '../SearchBox'
 
 const Header = () => {
   const user = useSelector(state => state.user)

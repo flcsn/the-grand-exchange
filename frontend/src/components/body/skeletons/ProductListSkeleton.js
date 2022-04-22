@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductItemSkeleton from './product-item-skeleton'
+import ProductItemSkeleton from './ProductItemSkeleton'
 
 const ProductListSkeleton = () => {
   return (

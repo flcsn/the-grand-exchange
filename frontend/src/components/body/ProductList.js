@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ProductItem from './product-item'
+import ProductItem from './ProductItem'
 
 const ProductList = ({ products }) => {
   return (
