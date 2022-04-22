@@ -38,7 +38,7 @@ const PurchaseConfirmation = ({ closeForm, product, quantity, user, imageSrc }) 
           />
         </div>
         <p className='purchase-confirmation-text'>Buy <strong>{quantity} {product.title}</strong> for <strong>₱{(quantity * product.price).toLocaleString()}</strong>?</p>
-        <p>Your wallet: <strong>₱{user.funds.toLocaleString()}</strong></p>
+        { user && <p>Your wallet: <strong>₱{user.funds.toLocaleString()}</strong></p> }
         <div className='confirmation-button-container'>
           <button className='cancel-button' onClick={cancel}>Cancel</button>
           <button className='confirm-button primary-button' onClick={confirm}>Confirm</button>
