@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import ProductList from './product-list'
 import ProductForm from './product-form'
+import UserProductList from './user-product-list'
 
 const UserProducts = ({ products }) => {
   const [showProductForm, setShowProductForm] = useState(false)
@@ -20,7 +20,7 @@ const UserProducts = ({ products }) => {
         </button>
         { showProductForm && <ProductForm closeForm={() => setShowProductForm(false)}/> }
       </div>
-      <ProductList products={products} />
+      <UserProductList products={products} />
     </div>
   )
 }
