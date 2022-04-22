@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { FaEdit, FaRegEye } from 'react-icons/fa'
 import { RiDeleteBinLine } from 'react-icons/ri'
 
-import ProductForm from './ProductForm'
-import DeleteConfirmation from './DeleteConfirmation'
+import ProductForm from '../modals/ProductForm'
+import DeleteConfirmation from '../modals/DeleteConfirmation'
 
 
 const UserProductListItem = ({ product }) => {

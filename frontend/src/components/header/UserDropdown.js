@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { logout } from '../reducers/userReducer'
+import { logout } from '../../reducers/userReducer'
 import { AiFillPlusCircle } from 'react-icons/ai'
 
 const UserDropdown = forwardRef(({ user, displayDropdown, setDisplayDropdown, setShowWalletForm }, ref) => {

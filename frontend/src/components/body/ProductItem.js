@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import base64ArrayBuffer from '../services/utils'
+import base64ArrayBuffer from '../../services/utils'
 
 const ProductItem = ({ product }) => {
   // convert image buffer data type to base 64 string for image rendering

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { buyProduct } from '../reducers/productReducer'
+import { buyProduct } from '../../reducers/productReducer'
 
 const PurchaseConfirmation = ({ closeForm, product, quantity, user, imageSrc }) => {
   const dispatch = useDispatch()

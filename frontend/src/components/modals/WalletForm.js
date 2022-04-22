@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addFunds } from '../reducers/userReducer'
+import { addFunds } from '../../reducers/userReducer'
 
 const WalletForm = ({ closeForm }) => {
   const user = useSelector(state => state.user)

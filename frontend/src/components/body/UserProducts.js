@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import ProductForm from './ProductForm'
+import ProductForm from '../modals/ProductForm'
 import UserProductList from './UserProductList'
 
 const UserProducts = ({ products }) => {

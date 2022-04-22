@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addProduct, editProduct } from '../reducers/productReducer'
+import { addProduct, editProduct } from '../../reducers/productReducer'
 
 const ProductForm = ({ closeForm, prepopulate }) => {
   const [title, setTitle] = useState('')

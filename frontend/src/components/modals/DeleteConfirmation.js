@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteProduct } from '../reducers/productReducer'
+import { deleteProduct } from '../../reducers/productReducer'
 
 const DeleteConfirmation = ({ closeForm, product }) => {
   const dispatch = useDispatch()
