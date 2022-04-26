@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const productsBaseURL = 'http://localhost:3001/products'
+const productsBaseURL = 'https://tgesvr.herokuapp.com/products'
 let token = null
 
 const extractToken = user => {

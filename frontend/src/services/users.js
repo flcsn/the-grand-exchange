@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const usersBaseURL = 'http://localhost:3001/users'
-const loginBaseURL = 'http://localhost:3001/login'
+const usersBaseURL = 'https://tgesvr.herokuapp.com/users'
+const loginBaseURL = 'https://tgesvr.herokuapp.com/login'
 
 const register = async (username, password, emailAddress) => {
   const newUser = { username, password, emailAddress }
