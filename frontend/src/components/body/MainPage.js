@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../../reducers/productReducer'
 
 import ProductList from './ProductList'
+import ProductListSkeleton from './skeletons/ProductListSkeleton'
 
 const MainPage = () => {
   const products = useSelector(state => state.products)
@@ -15,7 +16,10 @@ const MainPage = () => {
 
   return (
     <div className='body-container'>
-      <ProductList products={products} />
+      { !products
+        ? <ProductListSkeleton />
+        : <ProductList products={products} />
+      }
     </div>
   )
 }
