@@ -7,7 +7,6 @@ import ProductListSkeleton from './skeletons/ProductListSkeleton'
 
 const MainPage = () => {
   const products = useSelector(state => state.products)
-
   const dispatch = useDispatch()
 
   useEffect(async () => {
@@ -16,7 +15,7 @@ const MainPage = () => {
 
   return (
     <div className='body-container'>
-      { !products
+      { products.length === 0
         ? <ProductListSkeleton />
         : <ProductList products={products} />
       }
